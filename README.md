@@ -137,7 +137,9 @@ docker-compose up -d
    Sao chép `.env.example` thành `.env`:
    ```env
    VITE_API_BASE_URL=http://127.0.0.1:8000/api/
+   VITE_BACKEND_BASE_URL=http://127.0.0.1:8000
    VITE_OPENWEATHER_API_KEY=your_openweather_api_key
+   VITE_PAYMENT_WEBHOOK_SECRET=mock_signature_12345
    ```
 4. Khởi chạy ứng dụng:
    ```bash

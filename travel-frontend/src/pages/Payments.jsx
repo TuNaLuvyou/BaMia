@@ -74,10 +74,13 @@ const Payments = () => {
     const simulateSandboxIPN = async (statusCode) => {
         setSandboxActionLoading(true);
         try {
+            // Chữ ký sandbox đọc từ biến môi trường (mặc định 'mock_signature_12345' cho bản demo).
+            // LƯU Ý: chữ ký này CHỈ dùng cho mô phỏng thanh toán, KHÔNG phải secret thật.
+            const webhookSignature = import.meta.env.VITE_PAYMENT_WEBHOOK_SECRET || 'mock_signature_12345';
             await api.post('payments/webhook/', {
                 transaction_id: transactionId,
                 status: statusCode,
-                signature: "mock_signature_12345"
+                signature: webhookSignature
             });
             
             await new Promise(r => setTimeout(r, 1500));

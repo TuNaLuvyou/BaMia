@@ -12,7 +12,7 @@ import os
 from tours.models import Tour, Destination
 
 OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
-OLLAMA_MODEL = os.environ.get('OLLAMA_MODEL', 'glm-5.2:cloud')
+OLLAMA_MODEL = os.environ.get('OLLAMA_MODEL', 'qwen2.5:1.5b')
 OLLAMA_TIMEOUT_CONNECT = 5    # Giây chờ kết nối đến Ollama
 OLLAMA_TIMEOUT_READ = 120     # Giây chờ đọc response (model có thể chậm)
 OLLAMA_MAX_RETRIES = 2        # Số lần thử lại tối đa
@@ -94,7 +94,7 @@ def _extract_budget(text: str):
             pass
 
     # Dạng: X triệu / X tr
-    m = re.search(r'([\d.]+)\s*tri[eệ]u', t)
+    m = re.search(r'([\d.,]+)\s*tri[eệ]u', t)
     if m:
         try:
             return int(float(m.group(1).replace(',', '.')) * 1_000_000)
@@ -102,7 +102,7 @@ def _extract_budget(text: str):
             pass
 
     # Dạng: Xk / X nghìn / X ngàn
-    m = re.search(r'([\d.]+)\s*(?:k\b|nghìn|ngàn)', t)
+    m = re.search(r'([\d.,]+)\s*(?:k\b|nghìn|ngàn)', t)
     if m:
         try:
             return int(float(m.group(1).replace(',', '.')) * 1_000)
