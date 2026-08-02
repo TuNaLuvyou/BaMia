@@ -275,7 +275,7 @@ class AdminDashboardView(APIView):
         total_tours = Tour.objects.count()
         total_bookings = Booking.objects.count()
 
-        confirmed_bookings = Booking.objects.filter(status='Confirmed')
+        confirmed_bookings = Booking.objects.filter(status__in=['Confirmed', 'Paid'])
         revenue = sum([booking.total_price for booking in confirmed_bookings])
 
         recent_bookings = Booking.objects.order_by('-created_at')[:5]

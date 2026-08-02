@@ -11,8 +11,9 @@ import os
 
 from tours.models import Tour, Destination
 
-OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
-OLLAMA_MODEL = os.environ.get('OLLAMA_MODEL', 'qwen2.5:1.5b')
+OLLAMA_BASE_URL = os.environ.get('OLLAMA_BASE_URL', 'http://127.0.0.1:11434').rstrip('/')
+OLLAMA_URL = f"{OLLAMA_BASE_URL}/api/chat"
+OLLAMA_MODEL = os.environ.get('OLLAMA_MODEL', 'qwen3:8b')
 OLLAMA_TIMEOUT_CONNECT = 5    # Giây chờ kết nối đến Ollama
 OLLAMA_TIMEOUT_READ = 120     # Giây chờ đọc response (model có thể chậm)
 OLLAMA_MAX_RETRIES = 2        # Số lần thử lại tối đa
@@ -26,11 +27,11 @@ class OllamaHealthView(APIView):
         try:
             # Kiểm tra endpoint gốc của Ollama
             resp = requests.get(
-                "http://127.0.0.1:11434/",
+                f"{OLLAMA_BASE_URL}/",
                 timeout=(OLLAMA_TIMEOUT_CONNECT, 5)
             )
             if resp.status_code == 200:
-                return Response({'status': 'ok', 'message': 'Ollama đang hoạt động.'})
+                return Response({'status': 'ok', 'message': f'Ollama đang hoạt động ({OLLAMA_MODEL}).'})
             return Response({'status': 'error', 'message': 'Ollama phản hồi không hợp lệ.'}, status=503)
         except requests.exceptions.ConnectionError:
             return Response({'status': 'offline', 'message': 'Ollama chưa được khởi động.'}, status=503)
@@ -46,8 +47,8 @@ def _stream_ollama(ollama_messages):
         "stream": True,
         "options": {
             "temperature": 0.1,     # Thấp (0.1) → bám sát luật, không sáng tạo lung tung
-            "num_predict": 768,     # Model 7b cần nhiều token hơn để trả lời đầy đủ
-            "num_ctx": 4096,        # Tăng context window cho model 7b
+            "num_predict": 1024,    # Model Qwen3:8b có thể trả lời chi tiết, mở rộng token limit
+            "num_ctx": 8192,        # Context window 8k cho Qwen3:8b
             "top_k": 20,
             "top_p": 0.8,
             "repeat_last_n": 64,
