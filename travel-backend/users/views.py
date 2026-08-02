@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework import generics
 from django.contrib.auth.models import User
 from .serializers import RegisterSerializer, SupportRequestSerializer, UserUpdateSerializer, ChangePasswordSerializer
@@ -8,8 +10,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core.mail import send_mail
 from django.conf import settings
-from django.utils.crypto import get_random_string
 from .models import SupportRequest
+
+logger = logging.getLogger(__name__)
 
 # Thư viện bảo mật tích hợp sẵn của Django phục vụ việc tạo Token và mã hóa UID
 from django.contrib.auth.tokens import default_token_generator
@@ -29,13 +32,14 @@ class ForgotPasswordView(APIView):
         if not email:
             return Response({"error": "Vui lòng nhập email"}, status=status.HTTP_400_BAD_REQUEST)
         
+        # Không tiết lộ email có tồn tại hay không (chống dò email / user enumeration)
         try:
             user = User.objects.get(email=email)
-            
+
             # Sử dụng thư viện của Django để tạo Token bảo mật một lần và mã hóa ID người dùng (UID)
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
-            
+
             # Tạo đường dẫn trỏ về trang Reset Password của Frontend
             # Mặc định React FE chạy cổng 5173
             frontend_url = getattr(settings, 'FRONTEND_URL', 'http://localhost:5173')
@@ -52,16 +56,15 @@ class ForgotPasswordView(APIView):
                 f'Nếu bạn không yêu cầu thay đổi mật khẩu, vui lòng bỏ qua email này.\n\n'
                 f'Trân trọng,\nĐội ngũ TravelBaMia'
             )
-            email_from = settings.DEFAULT_FROM_EMAIL
-            recipient_list = [email]
-            
-            send_mail(subject, message, email_from, recipient_list)
-
-            return Response({"success": "Liên kết đặt lại mật khẩu đã được gửi về email của bạn!"}, status=status.HTTP_200_OK)
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email])
         except User.DoesNotExist:
-            return Response({"error": "Không tìm thấy người dùng với email này"}, status=status.HTTP_404_NOT_FOUND)
-        except Exception as e:
-            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            pass  # Không báo lỗi để tránh lộ thông tin
+        except Exception:
+            # Log lỗi nội bộ nhưng không lộ ra ngoài
+            logger.exception("ForgotPassword failed")
+            return Response({"error": "Đã có lỗi xảy ra. Vui lòng thử lại sau."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        return Response({"success": "Nếu email tồn tại trong hệ thống, liên kết đặt lại mật khẩu đã được gửi về email của bạn!"}, status=status.HTTP_200_OK)
 
 class ResetPasswordConfirmView(APIView):
     permission_classes = (AllowAny,)

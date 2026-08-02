@@ -9,7 +9,9 @@ import {
   CHAT_STORAGE_KEY, 
   CHAT_EXPIRY_MS, 
   buildSystemPrompt, 
-  cleanBotReply 
+  cleanBotReply,
+  parseBudget,
+  filterToursByBudget
 } from "./chatbox/ChatbotUtils";
 import useStreamChat from "./chatbox/useStreamChat";
 import ChatbotHeader from "./chatbox/ChatbotHeader";
@@ -148,6 +150,18 @@ const Chatbot = () => {
 
     const needsRefresh = /giỏ hàng|đơn hàng|booking|kiểm tra|cập nhật/i.test(userText);
     let currentPrompt = systemPrompt;
+    let currentTours = toursData; // Tour hiện tại (có thể đã lọc theo ngân sách)
+    
+    // Phân tích ngân sách từ toàn bộ context (history + tin nhắn hiện tại)
+    const fullContextText = [
+      ...history.slice(-6).map((m) => m.content),
+      userText,
+    ].join(" ");
+    const maxBudget = parseBudget(fullContextText);
+    if (maxBudget) {
+      currentTours = filterToursByBudget(toursData, maxBudget);
+      currentPrompt = buildSystemPrompt(currentTours);
+    }
     
     if (needsRefresh) {
       setIsLoading(true);
@@ -186,7 +200,46 @@ const Chatbot = () => {
         }
 
         const tourMatch = fullText.match(/\[TOUR_CARD:(\d+)\]/);
-        const tourId = tourMatch ? tourMatch[1] : null;
+        let tourId = tourMatch ? tourMatch[1] : null;
+
+        // Hàm tìm tour khớp tên tốt nhất trong đoạn văn bản (longest-match first)
+        const findBestMatchingTour = (text) => {
+          if (!text) return null;
+          const textLower = text.toLowerCase();
+          let best = null;
+          let bestLen = 0;
+          for (const t of toursData) {
+            const titleLower = t.title.toLowerCase();
+            if (textLower.includes(titleLower) && titleLower.length > bestLen) {
+              best = t;
+              bestLen = titleLower.length;
+            }
+          }
+          return best;
+        };
+
+        // Kiểm tra xem touri theo ID có khớp với tên tour được đề cập trong reply không
+        const tourFoundById = tourId ? toursData.find((t) => String(t.id) === tourId) : null;
+        const tourFoundByNameInReply = findBestMatchingTour(fullText);
+        const tourFoundByNameInUserMsg = findBestMatchingTour(userText);
+        // Ưu tiên: tên trong reply > tên trong user msg > ID
+        const tourByName = tourFoundByNameInReply || tourFoundByNameInUserMsg;
+
+        if (tourByName) {
+          if (!tourFoundById) {
+            // ID không tồn tại → dùng tên
+            console.warn(`[TourCard] ID ${tourId} không tồn tại → dùng "${tourByName.title}" (id=${tourByName.id})`);
+            tourId = String(tourByName.id);
+          } else if (String(tourByName.id) !== tourId) {
+            // ID tồn tại nhưng khác tên trong reply → nhượng cho tên (model hay viết đúng tên nhưng sai ID)
+            console.warn(`[TourCard] ID ${tourId} ("${tourFoundById.title}") khác tên reply "${tourByName.title}" → sửa thành id=${tourByName.id}`);
+            tourId = String(tourByName.id);
+          }
+        } else if (!tourFoundById && tourId) {
+          // Không tìm được theo tên lẫn ID → xóa tourId để tránh hiển thị sai
+          console.warn(`[TourCard] Không tìm thấy tour nào phù hợp, ẩn TourCard`);
+          tourId = null;
+        }
         const isEscalated = fullText.includes("[ESCALATE]");
         const cleanReply = cleanBotReply(fullText);
 

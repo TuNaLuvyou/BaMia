@@ -1,0 +1,76 @@
+# DATASET: CẨM NANG DU LỊCH THÀNH PHỐ HỒ CHÍ MINH (RAG-OPTIMIZED)
+---
+
+## [ĐỊA ĐIỂM CHECK-IN NỔI TIẾNG]
+* **Nhà thờ Đức Bà & Bưu điện Trung tâm Thành phố:** Cụm kiến trúc Gothic và Phục Hưng biểu tượng của Sài Gòn[cite: 2].
+* **Dinh Độc Lập:** Di tích lịch sử quốc gia đặc biệt, nơi lưu giữ kiến trúc thập niên 60 và dấu ấn ngày giải phóng[cite: 2].
+* **Chợ Bến Thành:** Biểu tượng văn hóa, giao thương lâu đời. Nổi tiếng với kiến trúc tháp đồng hồ và khu ẩm thực phong phú[cite: 2].
+* **Phố đi bộ Nguyễn Huệ:** Trục đường trung tâm sầm uất. Nơi tập trung Trụ sở UBND Thành phố, chung cư café 42 Nguyễn Huệ, hoạt động đường phố về đêm[cite: 2].
+* **Tòa nhà Landmark 81:** Tòa nhà cao nhất Việt Nam. Điểm check-in hiện đại tại công viên Vinhomes Central Park và đài quan sát Skyview[cite: 2].
+* **Bảo tàng Mỹ thuật TPHCM:** Kiến trúc phong cách Pháp-Hoa cổ điển, tone màu vàng đặc trưng, điểm check-in nghệ thuật thu hút giới trẻ[cite: 2].
+* **Phố Tây Bùi Viện:** Khu phố không ngủ, nhộn nhịp với các quán bar, pub và ẩm thực đường phố xuyên đêm[cite: 2].
+* **Địa đạo Củ Chi:** Cách trung tâm 50km. Hệ thống phòng thủ ngầm kiên cố dưới lòng đất, di tích lịch sử oai hùng[cite: 2].
+
+---
+
+## [ẨM THỰC & QUÁN ĂN NỔI TIẾNG]
+* **Cơm tấm Sài Gòn:**
+    * Cơm tấm Ba Ghiền (84 Đặng Văn Ngữ, Phú Nhuận) - Nổi tiếng với miếng sườn siêu to khổng lồ[cite: 2].
+    * Cơm tấm Nguyễn Văn Cừ (74 Nguyễn Văn Cừ, Quận 1) - Sườn nướng chất lượng, giá phân khúc cao[cite: 2].
+* **Hủ tiếu Nam Vang:**
+    * Hủ tiếu Thành Đạt (Hệ thống nhiều chi nhánh, Q1, Q3) - Phục vụ 24/7, nước lèo đậm đà[cite: 2].
+    * Hủ tiếu Nhân Quán (122D Nguyễn Trãi, Quận 1)[cite: 2].
+* **Bánh mì Sài Gòn:**
+    * Bánh mì Huỳnh Hoa (26 Lê Thị Riêng, Quận 1) - Bánh mì ô môi nổi tiếng nhất, nhân pa-tê thịt nguội siêu dày[cite: 2].
+    * Bánh mì Hồng Hoa (54 Nguyễn Văn Tráng, Quận 1)[cite: 2].
+* **Ăn vặt & Café:**
+    * Hẻm ăn vặt 76 Hai Bà Trưng (Quận 1) - Thiên đường ăn vặt giá rẻ (phá lấu, bột chiên, gỏi khô bò)[cite: 2].
+    * Café vợt Phan Đình Phùng (331/2 Phan Đình Phùng, Phú Nhuận) - Café gốc Hoa lưu giữ hương vị hơn 60 năm[cite: 2].
+
+---
+
+## [GỢI Ý LỊCH TRÌNH KHÁM PHÁ]
+
+### Tùy chọn 1: Lịch trình 2 Ngày 1 Đêm (Cơ bản)
+* **Ngày 1: Dấu ấn Lịch sử & Nhịp sống Sầm uất**
+    * Sáng (08:00 - 11:30): Nhà thờ Đức Bà -> Bưu điện Trung tâm -> Tản bộ tham quan Dinh Độc Lập[cite: 2].
+    * Trưa (12:00): Thưởng thức Cơm tấm Ba Ghiền hoặc hủ tiếu Nam Vang[cite: 2].
+    * Chiều (14:00 - 17:00): Tham quan Bảo tàng Mỹ thuật -> Di chuyển ra Chợ Bến Thành mua sắm, check-in[cite: 2].
+    * Tối (18:30+): Check-in chung cư café 42 Nguyễn Huệ -> Đi bộ dọc phố Nguyễn Huệ -> Hòa mình vào không khí náo nhiệt tại Phố Tây Bùi Viện[cite: 2].
+* **Ngày 2: Sài Gòn Hiện đại & Góc nhìn từ trên cao**
+    * Sáng (08:30 - 11:30): Trải nghiệm xe bus sông (Saigon Waterbus) ngắm cảnh hai bên bờ sông Sài Gòn -> Xuống bến tàu Bạch Đằng[cite: 2].
+    * Trưa (12:00): Ăn trưa và xếp hàng trải nghiệm bánh mì Huỳnh Hoa[cite: 2].
+    * Chiều (14:00 - 16:30): Di chuyển đến Landmark 81, dạo chơi công viên ven sông -> Lên đài quan sát ngắm toàn cảnh thành phố -> Kết thúc lịch trình[cite: 2].
+
+### Tùy chọn 2: Lịch trình tối giản 1 Ngày (Dành cho khách transit/công tác ngắn ngày)
+* **Sáng (08:00 - 11:30):** Check-in nhanh cụm biểu tượng: Nhà thờ Đức Bà -> Bưu điện Trung tâm -> Dinh Độc Lập.
+* **Trưa (12:00):** Ăn hủ tiếu Nam Vang Thành Đạt hoặc Nhân Quán.
+* **Chiều (13:30 - 17:00):** Ghé Chợ Bến Thành tham quan và mua quà lưu niệm -> Check-in sống ảo tại Bảo tàng Mỹ thuật TPHCM.
+* **Tối (18:00 - 21:00):** Dạo bộ trên Phố đi bộ Nguyễn Huệ -> Ngồi café chung cư 42 Nguyễn Huệ -> Thưởng thức bánh mì Huỳnh Hoa trước khi rời thành phố.
+
+### Tùy chọn 3: Lịch trình chuyên sâu 3 Ngày 2 Đêm (Khám phá trọn vẹn nội - ngoại thành)
+* **Ngày 1: Hoài niệm lịch sử & Phố Tây về đêm**
+    * Sáng (08:00 - 11:30): Tham quan Dinh Độc Lập -> Nhà thờ Đức Bà -> Bưu điện Trung tâm.
+    * Trưa (12:00): Ăn cơm tấm sườn nướng Nguyễn Văn Cừ hoặc Ba Ghiền.
+    * Chiều (14:00 - 17:00): Tham quan Bảo tàng Mỹ thuật TPHCM -> Đi xe buýt hai tầng (Hop-on Hop-off) dạo một vòng quanh Quận 1.
+    * Tối (18:30+): Ăn tối tại Hẻm ăn vặt 76 Hai Bà Trưng -> Trải nghiệm không khí sôi động tại Phố Tây Bùi Viện.
+* **Ngày 2: Khám phá di tích lịch sử ngoại thành Địa đạo Củ Chi**
+    * Sáng (07:30 - 12:00): Di chuyển bằng ô tô/xe máy đến Địa đạo Củ Chi -> Khám phá hệ thống phòng thủ ngầm, hầm chiến đấu, bếp Hoàng Cầm -> Thử khoai mì chấm muối mè.
+    * Trưa (12:30): Ăn trưa đặc sản bò tơ Củ Chi gần khu di tích.
+    * Chiều (14:30 - 17:00): Di chuyển về lại trung tâm -> Trải nghiệm ngắm hoàng hôn trên chuyến tàu Saigon Waterbus sông Sài Gòn.
+    * Tối (19:00+): Ăn tối bánh mì Huỳnh Hoa -> Tản bộ hóng mát trên Phố đi bộ Nguyễn Huệ.
+* **Ngày 3: Khám phá Sài Gòn hiện đại từ trên cao**
+    * Sáng (08:30 - 11:30): Thưởng thức café vợt Phan Đình Phùng lâu đời -> Di chuyển qua Landmark 81 check-in công viên Vinhomes Central Park.
+    * Trưa (12:00): Ăn trưa các món lẩu/nướng bên trong trung tâm thương mại Landmark 81.
+    * Chiều (13:30 - 15:30): Lên đài quan sát Skyview ngắm toàn cảnh Sài Gòn -> Check-out, kết thúc hành trình.
+
+### Tùy chọn 4: Lịch trình văn hóa Hoa - Việt & Sài Gòn xưa (1 Ngày 1 Đêm)
+* **Sáng (07:30 - 11:30):** Thưởng thức điểm tâm Dimsum tại khu Chợ Lớn (Quận 5) -> Tham quan Chùa Bà Thiên Hậu (ngôi chùa cổ nhất của người Hoa) -> Ghé chợ Bình Tây chụp ảnh kiến trúc cổ kính.
+* **Trưa (12:00):** Ăn vịt quay sốt tiêu đen hoặc mì vịt tiềm khu Quận 5.
+* **Chiều (14:00 - 17:00):** Di chuyển về Quận 1, tham quan Bảo tàng Thành phố Hồ Chí Minh (hoặc Bảo tàng Mỹ thuật) -> Uống café vợt mạn Phú Nhuận để trải nghiệm phong vị xưa.
+* **Tối (18:30+):** Ăn tối hủ tiếu Nam Vang -> Đi thuyền ngắm cảnh sông Sài Gòn về đêm tại Bến Bạch Đằng.
+
+---
+# METADATA (Dành cho AI lọc điều kiện)
+* **Thời gian du lịch đẹp nhất:** Mùa khô (Tháng 12 - Tháng 4 năm sau), thời tiết nắng ráo, thuận tiện di chuyển, đêm dịu mát[cite: 2].
+* **Phương tiện di chuyển nội thành:** Grab/Taxi (phổ biến nhất), Xe buýt hai tầng (Hop-on Hop-off quanh Quận 1), Saigon Waterbus (du lịch đường sông)[cite: 2].

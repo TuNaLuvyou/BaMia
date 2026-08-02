@@ -1,4 +1,4 @@
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView
 from django.views import View
 from django.views.generic import TemplateView, ListView, DeleteView, CreateView, UpdateView
 from django.contrib.admin.views.decorators import staff_member_required
@@ -12,6 +12,9 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from django.utils.crypto import get_random_string
+from django.http import JsonResponse
+from django.core.files.base import ContentFile
+import os
 
 # Import models
 from tours.models import Tour, Category, Destination
@@ -127,11 +130,11 @@ class AdminForgotPasswordView(View):
             message = f'Chào {user.username},\n\nMật khẩu Admin mới của bạn là: {new_password}\n\nVui lòng đăng nhập và đổi mật khẩu ngay.\n\nTrân trọng,\nSystem Admin'
             send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email])
 
-            # Create Support Request log
+            # Create Support Request log (KHÔNG lưu mật khẩu vào database)
             SupportRequest.objects.create(
                 user=user,
                 request_type='FORGOT_PASSWORD',
-                content=f"Quản trị viên yêu cầu cấp lại mật khẩu cho tài khoản staff: {user.username}. Hệ thống đã gửi mật khẩu mới: {new_password}",
+                content=f"Quản trị viên yêu cầu cấp lại mật khẩu cho tài khoản staff: {user.username}. Mật khẩu mới đã được gửi về email.",
                 status='PROCESSING'
             )
 
@@ -139,15 +142,15 @@ class AdminForgotPasswordView(View):
             
         except User.DoesNotExist:
             messages.error(request, "Không tìm thấy tài khoản với email này.")
-        except Exception as e:
-            messages.error(request, f"Lỗi: {str(e)}")
-            
+        except Exception:
+            messages.error(request, "Đã có lỗi xảy ra khi gửi email. Vui lòng thử lại sau.")
+
         return redirect('admin_login')
 
     def get(self, request):
         return redirect('admin_login')
 
-@method_decorator(staff_member_required, name='dispatch')
+@method_decorator(staff_member_required(login_url='admin_login'), name='dispatch')
 class AdminUserListView(ListView):
     model = User
     template_name = 'custom_admin/user_list.html'
@@ -172,7 +175,7 @@ class AdminUserListView(ListView):
             
         return queryset
 
-@method_decorator(staff_member_required, name='dispatch')
+@method_decorator(staff_member_required(login_url='admin_login'), name='dispatch')
 class AdminUserUpdateView(UpdateView):
     model = User
     template_name = 'custom_admin/user_form.html'
@@ -184,7 +187,7 @@ class AdminUserUpdateView(UpdateView):
         context['title'] = f"Chỉnh sửa: {self.object.username}"
         return context
 
-@method_decorator(staff_member_required, name='dispatch')
+@method_decorator(staff_member_required(login_url='admin_login'), name='dispatch')
 class AdminSupportRequestListView(ListView):
     model = SupportRequest
     template_name = 'custom_admin/request_list.html'
@@ -203,7 +206,7 @@ class AdminSupportRequestListView(ListView):
             
         return queryset
 
-@staff_member_required
+@staff_member_required(login_url='admin_login')
 def admin_complete_support_request(request, pk):
     support_request = get_object_or_404(SupportRequest, pk=pk)
     support_request.status = 'COMPLETED'
@@ -215,7 +218,7 @@ def admin_complete_support_request(request, pk):
 
 
 
-@staff_member_required
+@staff_member_required(login_url='admin_login')
 def admin_toggle_user_status(request, user_id):
     user = get_object_or_404(User, id=user_id)
     
@@ -401,7 +404,7 @@ class AdminDestinationDeleteView(DeleteView):
     model = Destination
     success_url = reverse_lazy('admin_destinations')
 
-@staff_member_required
+@staff_member_required(login_url='admin_login')
 def admin_get_destination_info(request, pk):
     """Lấy nội dung file text và keywords của địa điểm"""
     dest = get_object_or_404(Destination, pk=pk)
@@ -412,12 +415,12 @@ def admin_get_destination_info(request, pk):
                 content = f.read()
         except Exception as e:
             content = f"Lỗi đọc file: {str(e)}"
-    return json_response({
+    return JsonResponse({
         'content': content,
         'keywords': dest.keywords or ""
     })
 
-@staff_member_required
+@staff_member_required(login_url='admin_login')
 def admin_update_destination_info(request, pk):
     """Cập nhật nội dung file text và keywords của địa điểm"""
     if request.method == 'POST':
@@ -429,9 +432,6 @@ def admin_update_destination_info(request, pk):
         dest.save()
         
         # Xử lý file
-        import os
-        from django.core.files.base import ContentFile
-        
         file_name = f"info_{dest.id}.txt"
         
         # Nếu đã có file, ghi đè. Nếu chưa, tạo mới.
@@ -440,15 +440,10 @@ def admin_update_destination_info(request, pk):
                 with open(dest.info_file.path, 'w', encoding='utf-8') as f:
                     f.write(content)
             except Exception as e:
-                return json_response({'error': str(e)}, status=500)
+                return JsonResponse({'error': str(e)}, status=500)
         else:
             # Tạo file mới thông qua FileField
             dest.info_file.save(file_name, ContentFile(content.encode('utf-8')))
-            
-        return json_response({'status': 'success'})
-    return json_response({'error': 'Method not allowed'}, status=405)
 
-def json_response(data, status=200):
-    import json
-    from django.http import HttpResponse
-    return HttpResponse(json.dumps(data), content_type="application/json", status=status)
+        return JsonResponse({'status': 'success'})
+    return JsonResponse({'error': 'Method not allowed'}, status=405)

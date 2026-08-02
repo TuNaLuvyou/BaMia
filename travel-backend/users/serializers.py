@@ -11,13 +11,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         # Thêm các trường tùy chỉnh vào token
         token['username'] = user.username
-        # Bạn có thể thêm email hoặc các trường khác nếu muốn: token['email'] = user.email
 
         return token
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'email']
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -38,7 +33,7 @@ class SupportRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = SupportRequest
         fields = ['id', 'user', 'guest_name', 'guest_email', 'request_type', 'content', 'status', 'created_at']
-        read_only_fields = ['id', 'created_at', 'status']
+        read_only_fields = ['id', 'user', 'created_at', 'status']
 
 class UserUpdateSerializer(serializers.ModelSerializer):
     phone = serializers.CharField(source='profile.phone', required=False, allow_blank=True, allow_null=True)

@@ -1,0 +1,79 @@
+# DATASET: CẨM NANG DU LỊCH HÀ NỘI (RAG-OPTIMIZED)
+---
+
+## [ĐỊA ĐIỂM CHECK-IN NỔI TIẾNG]
+*   **Hồ Hoàn Kiếm (Hồ Gươm):** Trung tâm thành phố. Gồm Tháp Rùa, Đền Ngọc Sơn, Cầu Thê Húc, Phố đi bộ (cuối tuần).
+*   **Lăng Chủ tịch Hồ Chí Minh:** Nơi an nghỉ của Bác. Gồm Quảng trường Ba Đình, Chùa Một Cột, Ao cá nhà sàn. Lưu ý: Mặc trang phục trang nghiêm.
+*   **Nhà thờ Lớn Hà Nội:** Kiến trúc Gothic cổ kính. Địa điểm quen thuộc để check-in và uống "trà chanh Nhà Thờ".
+*   **Vavan Miếu - Quốc Tử Giám:** Trường đại học đầu tiên của Việt Nam. Nơi cầu may mắn khoa cử, học hành.
+*   **Chùa Trấn Quốc & Hồ Tây:** Ngôi chùa cổ nhất Hà Nội nằm bên bán đảo Hồ Tây. Thích hợp ngắm hoàng hôn.
+*   **Phố cổ Hà Nội (36 phố phường):** Khu vực lưu giữ kiến trúc cổ, nhộn nhịp về đêm (Phố Tạ Hiện - phố bia).
+*   **Hoàng thành Thăng Long:** Di sản văn hóa thế giới, kiến trúc thành quách lịch sử đại ngàn năm.
+
+---
+
+## [ẨM THỰC & QUÁN ĂN NỔI TIẾNG]
+*   **Phở Hà Nội:**
+    *   Phở Thìn Bờ Hồ (61 Đinh Tiên Hoàng) - Phở truyền thống nước trong.
+    *   Phở Thìn Lò Đúc (13 Lò Đúc) - Phở tái lăn nhiều hành, nước béo.
+    *   Phở Lý Quốc Sư (Số 10 Lý Quốc Sư).
+*   **Bún chả:**
+    *   Bún chả Hương Liên (24 Lê Văn Hưu) - Biệt danh "Bún chả Obama".
+    *   Bún chả Đắc Kim (1 Hàng Mành).
+*   **Bánh mì:**
+    *   Bánh mì Phố Cổ (38 Đinh Liệt).
+    *   Bánh mì sốt vang Đình Ngang (Cửa Nam).
+*   **Chả cá Lã Vọng:**
+    *   Chả cá Anh Vũ (120 K1 Giảng Võ).
+    *   Chả cá Lã Vọng gốc (14 Chả Cá).
+*   **Cà phê trứng:**
+    *   Café Giảng (39 Nguyễn Hữu Huân) - Nơi khai sinh ra cà phê trứng.
+    *   Café Đinh (13 Đinh Tiên Hoàng) - View nhìn thẳng ra Hồ Gươm.
+
+---
+
+## [GỢI Ý LỊCH TRÌNH KHÁM PHÁ]
+
+### Tùy chọn 1: Lịch trình 2 Ngày 1 Đêm (Cơ bản)
+*   **Ngày 1: Khám phá Lịch sử & Văn hóa**
+    *   Sáng (08:00 - 11:30): Viếng Lăng Bác -> Quảng trường Ba Đình -> Chùa Một Cột -> Hoàng thành Thăng Long.
+    *   Trưa (12:00): Ăn bún chả Hương Liên hoặc bún chả Đắc Kim.
+    *   Chiều (14:00 - 17:00): Tham quan Văn Miếu - Quốc Tử Giám -> Di chuyển ra Hồ Tây, check-in Chùa Trấn Quốc và ngắm hoàng hôn.
+    *   Tối (19:00+): Ăn phở Hà Nội -> Dạo Phố cổ, uống bia tại Phố Tạ Hiện.
+*   **Ngày 2: Hoài niệm Phố Cổ & Trải nghiệm local**
+    *   Sáng (08:00 - 11:00): Check-in Nhà thờ Lớn -> Đi bộ quanh Hồ Gươm (Đền Ngọc Sơn, Cầu Thê Húc) -> Thưởng thức cà phê trứng tại Café Giảng.
+    *   Trưa (12:00): Ăn chả cá Lã Vọng hoặc chả cá Anh Vũ.
+    *   Chiều (14:00 - 16:30): Mua sắm quà lưu niệm tại Phố cổ (Ô mai Hồng Lam, bánh cốm Hàng Than) -> Kết thúc lịch trình.
+
+### Tùy chọn 2: Lịch trình tối giản 1 Ngày (Dành cho khách công tác/Transit)
+*   **Sáng (08:00 - 11:00):** Viếng Lăng Bác -> Đi bộ sang Quảng trường Ba Đình và Chùa Một Cột.
+*   **Trưa (11:30):** Ăn bún chả Hương Liên hoặc bún chả Đắc Kim.
+*   **Chiều (13:30 - 17:00):** Tham quan Văn Miếu - Quốc Tử Giám -> Di chuyển về trung tâm check-in Nhà thờ Lớn -> Đi bộ ngắm Hồ Gươm và uống café trứng tại Café Giảng.
+*   **Tối (18:30+):** Ăn phở Hà Nội (Phở Thìn hoặc Lý Quốc Sư) -> Ghé Phố cổ mua sắm nhẹ hoặc dạo quanh mạn bờ hồ trước khi kết thúc.
+
+### Tùy chọn 3: Lịch trình chuyên sâu 3 Ngày 2 Đêm (Khám phá trọn vẹn)
+*   **Ngày 1: Trục Di sản & Hoàng hôn Hồ Tây**
+    *   Sáng (08:00 - 11:30): Viếng Lăng Bác -> Quảng trường Ba Đình -> Chùa Một Cột -> Hoàng thành Thăng Long.
+    *   Trưa (12:00): Ăn bún chả Hương Liên (Bún chả Obama).
+    *   Chiều (14:00 - 17:00): Tham quan Văn Miếu - Quốc Tử Giám -> Di chuyển ra Hồ Tây, check-in Chùa Trấn Quốc và ngắm hoàng hôn.
+    *   Tối (19:00+): Ăn phở Hà Nội -> Dạo Phố cổ, uống bia tại Phố Tạ Hiện.
+*   **Ngày 2: Hoài niệm Phố Cổ & Văn hóa Thủ đô**
+    *   Sáng (08:00 - 11:30): Trải nghiệm xe bus 2 tầng (City Tour) ngắm toàn cảnh thành phố -> Check-in Nhà thờ Lớn và uống trà chanh.
+    *   Trưa (12:00): Ăn chả cá Lã Vọng hoặc chả cá Anh Vũ.
+    *   Chiều (14:00 - 17:00): Đi bộ tham quan sâu Phố cổ (Nhà cổ 87 Mã Mây, Ô Quan Chưởng) -> Đi chợ Đồng Xuân -> Ghé Café Đinh ngắm Hồ Gươm.
+    *   Tối (19:00+): Thưởng thức bánh tôm Hồ Tây hoặc phở cuốn Ngũ Xã -> Đi xem show rối nước tại Nhà hát Múa rối Thăng Long hoặc dạo chợ đêm Phố cổ (nếu trùng cuối tuần).
+*   **Ngày 3: Góc nhìn đương đại & Mua sắm quà lưu niệm**
+    *   Sáng (08:30 - 11:30): Tham quan Nhà tù Hỏa Lò (địa điểm di tích lịch sử "hot" với giới trẻ) -> Check-in trường đại học Tổng hợp (kiến trúc Pháp cổ trên phố Lê Thánh Tông).
+    *   Trưa (12:00): Ăn bún đậu mắm tôm ngõ Tràng Tiền hoặc bún thang Bà Đức (Cầu Gỗ).
+    *   Chiều (14:00 - 16:30): Mua sắm quà lưu niệm (Ô mai Hồng Lam, bánh cốm Hàng Than) -> Thưởng thức kem Tràng Tiền -> Kết thúc hành trình.
+
+### Tùy chọn 4: Lịch trình Foodtour & Chữa lành (1 Ngày 1 Đêm - Không áp lực di chuyển)
+*   **Sáng (07:30 - 11:00):** Ăn sáng phở Thìn Bờ Hồ hoặc phở Lý Quốc Sư -> Đi dạo thong thả dưới hàng cây cổ thụ phố Phan Đình Phùng -> Check-in Ô Quan Chưởng.
+*   **Trưa (11:30):** Ăn nộm bò khô Long Vi Dung (Hồ Hoàn Kiếm) hoặc bánh cuốn Thanh Trì.
+*   **Chiều (14:00 - 17:30):** Tìm một quán café yên tĩnh mạn Hồ Tây đọc sách, ngắm cảnh -> Thuê xe đạp đạp 1 vòng quanh Hồ Tây đón gió.
+*   **Tối (19:00+):** Ăn lẩu riêu cua sườn sụn tại Phố Phó Đức Chính -> Trải nghiệm xe bus hai tầng chuyến muộn (Night tour) ngắm Hà Nội lung linh ánh đèn.
+
+---
+# METADATA (Dành cho AI lọc điều kiện)
+*   **Thời gian du lịch đẹp nhất:** Mùa thu (Tháng 9 - Tháng 11) nhờ tiết trời mát mẻ, hoa sữa.
+*   **Phương tiện di chuyển nội thành:** Xe máy, taxi, xe bus 2 tầng (City Tour quanh các điểm cốt lõi).

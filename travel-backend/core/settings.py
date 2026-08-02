@@ -67,9 +67,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True # Dùng cho development
+# CORS: mặc định cho phép tất cả ở môi trường dev, có thể giới hạn qua biến môi trường
+CORS_ALLOW_ALL_ORIGINS = os.environ.get('CORS_ALLOW_ALL_ORIGINS', 'True').lower() == 'true'
 
-import os
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
@@ -153,6 +153,9 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1), # Sống 1 ngày
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
+
+# Mật khẩu dùng để xác thực chữ ký Webhook IPN thanh toán (chống giả mạo)
+PAYMENT_WEBHOOK_SECRET = os.environ.get('PAYMENT_WEBHOOK_SECRET', 'mock_signature_12345')
 
 # Email Configuration
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')

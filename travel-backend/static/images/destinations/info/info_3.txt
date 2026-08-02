@@ -1,0 +1,83 @@
+# DATASET: CẨM NANG DU LỊCH HỘI AN (RAG-OPTIMIZED)
+---
+
+## [ĐỊA ĐIỂM CHECK-IN NỔI TIẾNG]
+* **Chùa Cầu (Lai Viễn Kiều):** Biểu tượng của Hội An. Kiến trúc giao thoa Nhật - Việt - Hoa độc đáo bắc qua con lạch nhỏ trong phố cổ[cite: 1].
+* **Hội quán Phúc Kiến / Triều Châu / Quảng Đông:** Các công trình kiến trúc tâm linh rực rỡ, chạm khắc tinh xảo do Hoa kiều xây dựng[cite: 1].
+* **Nhà cổ Tấn Ký / Phùng Hưng:** Nhà cổ bằng gỗ có tuổi đời hơn 200 năm, lưu giữ cấu trúc hình ống đặc trưng và vết tích các trận lụt lịch sử[cite: 1].
+* **Sông Hoài:** Dòng sông chảy qua phố cổ. Hoạt động nổi tiếng: Đi thuyền gỗ, thả hoa đăng lung linh về đêm[cite: 1].
+* **Phố đèn lồng:** Toàn bộ khu phố cổ rực rỡ ánh đèn lồng vào buổi tối, đặc biệt là khu vực chợ đêm Nguyễn Hoàng[cite: 1].
+* **Làng gốm Thanh Hà:** Cách phố cổ 3km. Trải nghiệm tự tay làm gốm chuốt và check-in Công viên đất nung[cite: 1].
+* **Rừng dừa Bảy Mẫu (Cẩm Thanh):** Cách trung tâm 5km. Trải nghiệm đi thuyền thúng chai, xem múa thúng và len lỏi giữa rừng dừa nước[cite: 1].
+* **Bãi biển An Bàng:** Top những bãi biển đẹp nhất châu Á, không khí thanh bình, nhiều quán bar/café ven biển cực chill[cite: 1].
+
+---
+
+## [ẨM THỰC & QUÁN ĂN NỔI TIẾNG]
+* **Cao lầu Hội An:**
+    * Cao lầu Thanh (26 Thái Phiên) - Quán local lâu đời, sợi mì dai, thịt xá xíu đậm đà[cite: 1].
+    * Cao lầu Liên (16 Thái Phiên)[cite: 1].
+* **Cơm gà Hội An:**
+    * Cơm gà Bà Buội (22 Phan Chu Trinh) - Nổi tiếng nhất, gà xé thơm, cơm nấu nước luộc gà[cite: 1].
+    * Cơm gà Nga (8 Phan Chu Trinh)[cite: 1].
+* **Bánh mì Hội An:**
+    * Bánh mì Phượng (2B Phan Chu Trinh) - Đa dạng loại nhân, nước sốt đặc chế, cực kỳ nổi tiếng quốc tế[cite: 1].
+    * Bánh mì Madam Khánh (115 Trần Cao Vân) - "The Banh Mi Queen", nhân đầy đặn, vị đậm đà[cite: 1].
+* **Món ăn vặt & Đặc sản khác:**
+    * Bánh đập hến xào Bà Già (Cẩm Nam)[cite: 1].
+    * Chè bắp, bánh vạc Hoa Hồng Trắng (533 Hai Bà Trưng)[cite: 1].
+    * Nước Mót (150 Trần Phú) - Thức uống thảo mộc chanh sả hạt sen giải nhiệt đặc trưng[cite: 1].
+
+---
+
+## [GỢI Ý LỊCH TRÌNH KHÁM PHÁ]
+
+### Tùy chọn 1: Lịch trình 2 Ngày 1 Đêm (Cơ bản)
+* **Ngày 1: Khám phá Phố Cổ hoài niệm**
+    * Sáng (08:30 - 11:30): Tản bộ phố cổ buổi sáng trong lành -> Check-in Chùa Cầu -> Thưởng thức nước Mót -> Tham quan Hội quán Phúc Kiến và Nhà cổ Tấn Ký[cite: 1].
+    * Trưa (12:00): Ăn cơm gà Bà Buội hoặc cơm gà Nga[cite: 1].
+    * Chiều (14:30 - 17:00): Check-in các quán café sân thượng ngắm mái ngói rêu phong (Faifo Coffee) -> Di chuyển ra bãi biển An Bàng tắm biển, đón hoàng hôn[cite: 1].
+    * Tối (19:00+): Ăn cao lầu -> Đi dạo Phố đèn lồng -> Đi thuyền trên sông Hoài và thả hoa đăng cầu may mắn[cite: 1].
+* **Ngày 2: Trải nghiệm sông nước & Làng nghề**
+    * Sáng (08:00 - 11:00): Di chuyển đến Rừng dừa Bảy Mẫu -> Trải nghiệm đi thuyền thúng, xem biểu diễn quay thúng -> Ăn trưa đặc sản mộc mạc tại khu du lịch sinh thái[cite: 1].
+    * Trưa (12:00): Trở lại trung tâm, ăn bánh mì Phượng hoặc Madam Khánh[cite: 1].
+    * Chiều (14:00 - 16:30): Tham quan Làng gốm Thanh Hà, tự tay làm một món đồ lưu niệm nhỏ bằng đất nung -> Mua quà (bánh tổ, bánh ít lá gai, đèn lồng) -> Kết thúc lịch trình[cite: 1].
+
+### Tùy chọn 2: Lịch trình tối giản 1 Ngày (Dành cho khách đi từ Đà Nẵng về trong ngày)
+* **Sáng (08:30 - 11:30):** Di chuyển thẳng đến Rừng dừa Bảy Mẫu -> Đi thuyền thúng xuyên rừng dừa nước -> Xem múa thúng mạo hiểm.
+* **Trưa (12:00):** Di chuyển về trung tâm Phố cổ, ăn cơm gà Bà Buội hoặc cơm gà Nga.
+* **Chiều (13:30 - 17:00):** Đi bộ tham quan các di tích cốt lõi: Chùa Cầu -> Nhà cổ Tấn Ký -> Hội quán Phúc Kiến -> Thưởng thức nước thảo mộc Mót -> Ghé café sân thượng chụp ảnh.
+* **Tối (18:00 - 20:30):** Ăn nhẹ cao lầu -> Ngắm Phố cổ lên đèn -> Đi thuyền thả hoa đăng trên sông Hoài -> Trở về Đà Nẵng hoặc kết thúc hành trình.
+
+### Tùy chọn 3: Lịch trình chuyên sâu 3 Ngày 2 Đêm (Kết hợp đảo Cù Lao Chàm)
+* **Ngày 1: Nhịp sống Phố Cổ cổ kính**
+    * Sáng (08:30 - 11:30): Tản bộ tham quan Chùa Cầu, Hội quán Quảng Đông và Nhà cổ Phùng Hưng.
+    * Trưa (12:00): Thưởng thức bánh đập hến xào Bà Già.
+    * Chiều (14:00 - 17:00): Học làm đèn lồng thủ công -> Check-in bãi biển An Bàng và ngắm hoàng hôn.
+    * Tối (18:30+): Ăn tối bánh mì Phượng -> Đi chợ đêm Nguyễn Hoàng -> Ngắm phố đèn lồng và nghe hát bài chòi bên sông Hoài.
+* **Ngày 2: Kỳ quan biển đảo Cù Lao Chàm**
+    * Sáng (07:30 - 11:30): Di chuyển ra bến tàu Cửa Đại -> Đi cano cao tốc ra đảo Cù Lao Chàm -> Tham quan khu bảo tồn biển, Chùa Hải Tạng -> Lặn ngắm san hô (Snorkeling) tại bãi Xếp.
+    * Trưa (12:00): Ăn trưa hải sản tươi sống và rau rừng tại bãi Ông.
+    * Chiều (14:00 - 16:00): Nghỉ ngơi, tắm biển tự do -> Lên cano trở về đất liền -> Nghỉ ngơi tại khách sạn.
+    * Tối (19:00+): Ăn tối cao lầu Thanh -> Đi dạo phố cổ ban đêm yên tĩnh mạn cầu An Hội.
+* **Ngày 3: Khám phá các làng nghề truyền thống**
+    * Sáng (08:00 - 11:30): Thuê xe đạp đi dọc đồng lúa sang Làng rau Trà Quế -> Trải nghiệm làm nông dân xới đất, trồng rau -> Ghé Làng gốm Thanh Hà thử tài chuốt gốm.
+    * Trưa (12:00): Ăn trưa các món cuốn kèm rau sống Trà Quế.
+    * Chiều (14:00 - 16:00): Mua sắm đặc sản (bánh ít lá gai, ô mai, đồ gốm nhỏ) -> Kết thúc hành trình.
+
+### Tùy chọn 4: Lịch trình Nghỉ dưỡng & Sống chậm (2 Ngày 2 Đêm)
+* **Đêm đầu tiên (19:00+):** Check-in resort/homestay ven sông hoặc ven biển An Bàng -> Ăn tối nhẹ nhàng -> Thư giãn, nghe tiếng sóng/gió rì rào.
+* **Ngày 1: Bình minh bên biển & Hoài niệm chiều tà**
+    * Sáng (05:00 - 10:00): Đón bình minh tại biển An Bàng -> Tắm biển sớm -> Ăn sáng tại resort -> Đạp xe thong thả quanh các con đường làng ngập nắng.
+    * Trưa (12:00): Thưởng thức cơm gà đặc sản.
+    * Chiều (15:00 - 18:00): Di chuyển vào phố cổ khi nắng đã dịu -> Tìm một góc quán khuất uống trà sả, đọc sách -> Ngắm sông Hoài lững lờ trôi lúc hoàng hôn.
+    * Tối (19:00+): Ăn tối tại một nhà hàng ven sông -> Thả hoa đăng nhẹ nhàng -> Về lại resort nghỉ ngơi.
+* **Ngày 2: Detox tâm hồn tại các làng nghề cổ**
+    * Sáng (08:30 - 11:00): Đi dạo ngắm nhìn kiến trúc rêu phong buổi sớm -> Thưởng thức café vợt local -> Trải nghiệm ngâm chân thảo mộc tại làng rau.
+    * Trưa (12:00): Ăn bánh mì Madam Khánh.
+    * Chiều (14:00 - 16:00): Mua sắm một vài món quà lưu niệm bằng vải lụa hoặc đồ gỗ mỹ nghệ thủ công -> Check-out -> Kết thúc lịch trình.
+
+---
+# METADATA (Dành cho AI lọc điều kiện)
+* **Thời gian du lịch đẹp nhất:** Mùa khô (Tháng 2 - Tháng 8), đặc biệt đi vào ngày rằm (14 âm lịch hàng tháng) để tham gia Đêm rằm phố cổ tắt đèn điện, chỉ thắp đèn lồng[cite: 1].
+* **Phương tiện di chuyển nội thành:** Xe đạp (hầu hết homestay miễn phí), đi bộ (phố cổ cấm xe máy theo giờ), xe điện hoặc taxi khi đi xa (Rừng dừa, An Bàng)[cite: 1].

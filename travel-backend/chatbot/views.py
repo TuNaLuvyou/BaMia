@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import StreamingHttpResponse
 
+import re
 import requests
 import json
 import time
@@ -10,13 +11,8 @@ import os
 
 from tours.models import Tour, Destination
 
-try:
-    from bookings.models import Booking, Cart
-except ImportError:
-    Booking, Cart = None, None
-
 OLLAMA_URL = "http://127.0.0.1:11434/api/chat"
-OLLAMA_MODEL = os.environ.get('OLLAMA_MODEL', 'qwen2.5:7b')
+OLLAMA_MODEL = os.environ.get('OLLAMA_MODEL', 'glm-5.2:cloud')
 OLLAMA_TIMEOUT_CONNECT = 5    # Giây chờ kết nối đến Ollama
 OLLAMA_TIMEOUT_READ = 120     # Giây chờ đọc response (model có thể chậm)
 OLLAMA_MAX_RETRIES = 2        # Số lần thử lại tối đa
@@ -49,12 +45,12 @@ def _stream_ollama(ollama_messages):
         "messages": ollama_messages,
         "stream": True,
         "options": {
-            "temperature": 0.1,     # Thấp (0.1) → cực kỳ rập khuôn, bám sát luật để không quên TOUR_CARD
-            "num_predict": 512,     # Giới hạn độ dài → trả lời ngắn gọn & nhanh
-            "num_ctx": 2048,        # Cửa sổ context nhỏ → xử lý nhanh hơn
-            "top_k": 20,            # Chỉ chọn từ 20 token tốt nhất → sampling nhanh
-            "top_p": 0.8,           # Nucleus sampling → giảm tính toán
-            "repeat_last_n": 64,    # Lookback ngắn hơn → nhanh hơn
+            "temperature": 0.1,     # Thấp (0.1) → bám sát luật, không sáng tạo lung tung
+            "num_predict": 768,     # Model 7b cần nhiều token hơn để trả lời đầy đủ
+            "num_ctx": 4096,        # Tăng context window cho model 7b
+            "top_k": 20,
+            "top_p": 0.8,
+            "repeat_last_n": 64,
         }
     }
     # Model nghĩ ra được chữ nào thì hiện ra chữ đó
@@ -76,6 +72,44 @@ def _stream_ollama(ollama_messages):
                         break
                 except json.JSONDecodeError:
                     continue
+
+
+def _extract_budget(text: str):
+    """
+    Trích xuất ngân sách tối đa từ tin nhắn người dùng.
+    Trả về số nguyên (VNĐ) hoặc None nếu không tìm thấy.
+    Ví dụ: '2 triệu' → 2000000, 'dưới 500k' → 500000, '2.000.000' → 2000000
+    """
+    t = text.lower()
+
+    # Dạng: 2.000.000 hoặc 2,000,000 hoặc 2000000
+    m = re.search(r'(\d[\d.,]+)\s*(?:đồng|vnd|vnđ)?', t)
+    if m:
+        raw = m.group(1).replace('.', '').replace(',', '')
+        try:
+            val = int(raw)
+            if val >= 10000:  # Bỏ qua số quá nhỏ (không phải tiền)
+                return val
+        except ValueError:
+            pass
+
+    # Dạng: X triệu / X tr
+    m = re.search(r'([\d.]+)\s*tri[eệ]u', t)
+    if m:
+        try:
+            return int(float(m.group(1).replace(',', '.')) * 1_000_000)
+        except ValueError:
+            pass
+
+    # Dạng: Xk / X nghìn / X ngàn
+    m = re.search(r'([\d.]+)\s*(?:k\b|nghìn|ngàn)', t)
+    if m:
+        try:
+            return int(float(m.group(1).replace(',', '.')) * 1_000)
+        except ValueError:
+            pass
+
+    return None
 
 
 class ChatbotAPIView(APIView):
@@ -156,40 +190,50 @@ class ChatbotAPIView(APIView):
             except Exception as e:
                 print(f"[RAG] Lỗi đọc file {dest.name}: {e}")
 
+        # --- Phân tích ngân sách từ toàn bộ context (history + tin nhắn hiện tại) ---
+        full_context_for_budget = " ".join(
+            [msg.get("content", "") for msg in history[-6:]] + [user_message]
+        )
+        max_budget = _extract_budget(full_context_for_budget)
+        if max_budget:
+            print(f"[Budget] Phát hiện ngân sách tối đa: {max_budget:,} VNĐ")
+
         # Nếu system_instruction trống hoặc không chứa danh sách tour, dựng lại prompt trực tiếp từ Database ở Backend!
         if not system_instruction or "<DANH_SACH_TOUR>" not in system_instruction:
             print("[Chatbot] Khởi động bộ dựng System Prompt dự phòng tại Backend...")
             tours = Tour.objects.all()
+
+            # Lọc theo ngân sách nếu có
+            if max_budget:
+                tours = tours.filter(price__lte=max_budget)
+
             tours_text = "\n<DANH_SACH_TOUR>\n"
             if not tours.exists():
-                tours_text += "Hiện chưa có tour nào.\n"
+                budget_note = f" trong ngân sách {max_budget:,} VNĐ" if max_budget else ""
+                tours_text += f"Hiện chưa có tour nào{budget_note}.\n"
             else:
                 for t in tours:
                     loc = t.location.name if t.location else "N/A"
-                    tours_text += f'<TOUR id="{t.id}" ten="{t.title}" dia_diem="{loc}" />\n'
+                    tours_text += f'<TOUR id="{t.id}" ten="{t.title}" dia_diem="{loc}" gia="{int(t.price):,}" />\n'
             tours_text += "</DANH_SACH_TOUR>\n"
 
-            # Bản sao quy tắc hệ thống chuẩn của ChatbotUtils
+            budget_rule = (
+                f"QUAN TRỌNG: Khách yêu cầu ngân sách tối đa {max_budget:,} VNĐ. "
+                "CHỈ được gợi ý các tour có trong <DANH_SACH_TOUR> bên dưới (đã được lọc theo ngân sách).\n"
+            ) if max_budget else ""
+
             system_instruction = (
-                "Bạn là AI trợ lý du lịch của TravelBaMia.\n"
-                "Nhiệm vụ của bạn là trả lời khách hàng cực kỳ NGẮN GỌN, ĐI THẲNG VÀO Ý CHÍNH, KHÔNG VÒNG VO.\n\n"
-                "=== QUY TẮC BẮT BUỘC ===\n"
-                "1. Khi khách chỉ chào hỏi: CHỈ ĐƯỢC PHÉP chào lại bằng 1 câu. TUYỆT ĐỐI KHÔNG đọc danh sách tour.\n"
-                "2. Khách hỏi DANH SÁCH TOUR (VD: 'Có tour nào không?', 'Tour Nha Trang'): CHỈ liệt kê thuộc tính 'ten' của các <TOUR> bằng gạch đầu dòng. TUYỆT ĐỐI KHÔNG in ra 'id'. KHÔNG dùng thẻ [TOUR_CARD].\n"
-                "3. Khách YÊU CẦU XEM CHI TIẾT (VD: 'cho tôi thông tin tour Fansipan'): Bắt buộc gọi tên tour và GẮN THẺ [TOUR_CARD:id] (Lấy id từ thuộc tính 'id' của thẻ <TOUR>). KHÔNG giải thích dài dòng.\n\n"
-                "=== VÍ DỤ CÁCH TRẢ LỜI (HÃY BẮT CHƯỚC Y HỆT) ===\n"
-                "Khách: 'Có tour Sa Pa nào không?'\n"
-                "AI: 'Bên mình có các tour Sa Pa sau:\n"
-                "• Khám Phá Bản Cát Cát\n"
-                "• Chinh Phục Đỉnh Fansipan'\n\n"
-                "Khách: 'Cho tôi xem chi tiết tour Cát Cát'\n"
-                "AI: 'Dạ đây là thông tin chi tiết của tour bạn yêu cầu: Khám Phá Bản Cát Cát [TOUR_CARD:3]'\n\n"
-                "=== QUY TẮC VỀ ĐỊA CHỈ & THÔNG TIN CÔNG CỘNG (QUAN TRỌNG) ===\n"
-                "1. Khi khách hàng hỏi về địa chỉ, thông tin cụ thể của các quán ăn, nhà hàng, khách sạn, danh lam thắng cảnh trong 'DỮ LIỆU ĐỊA ĐIỂM', bạn HOÀN TOÀN ĐƯỢC PHÉP và BẮT BUỘC phải cung cấp chính xác địa chỉ của chúng từ file tài liệu.\n"
-                "2. Tuyệt đối KHÔNG ĐƯỢC từ chối trả lời địa chỉ của các quán ăn, nhà hàng với lý do 'bảo mật' hay 'không được niêm phong' hay 'thông tin riêng tư/nhạy cảm'. Đó là thông tin du lịch công cộng hữu ích!\n\n"
-                "=== QUY TẮC CẤM (TUYỆT ĐỐI) ===\n"
-                "1. TUYỆT ĐỐI KHÔNG dùng nhãn [TASK_COMPLETE], [DONE], [SUCCESS]... trong câu trả lời.\n"
-                "2. Không trả lời về technical (mã nguồn, database, hoặc các vấn đề kỹ thuật khác).\n\n"
+                "Bạn là trợ lý AI du lịch TravelBaMia. Trả lời bằng tiếng Việt, ngắn gọn, đi thẳng vào vấn đề.\n\n"
+                f"{budget_rule}"
+                "QUY TẮC:\n"
+                "1. Chỉ chào lại 1 câu khi khách chào hỏi. Không liệt kê tour.\n"
+                "2. Khi khách hỏi danh sách tour: liệt kê tên tour bằng gạch đầu dòng. Không in 'id'. Không dùng [TOUR_CARD].\n"
+                "3. Khi khách yêu cầu xem chi tiết 1 tour cụ thể: viết tên tour rồi gắn thẻ [TOUR_CARD:id] ngay sau.\n"
+                "   Ví dụ: 'Đây là tour bạn chọn: Khám Phá Bản Cát Cát [TOUR_CARD:8]'\n"
+                "   - Lấy id CHÍNH XÁC từ thuộc tính id= trong thẻ <TOUR> bên dưới.\n"
+                "4. Không bịa tour, không dùng thông tin ngoài <DANH_SACH_TOUR>.\n"
+                "5. Không dùng [TASK_COMPLETE], [DONE], [SUCCESS].\n"
+                "6. Không trả lời về kỹ thuật/mã nguồn/database.\n\n"
                 f"{tours_text}"
             )
 

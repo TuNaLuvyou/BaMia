@@ -1,25 +1,14 @@
-from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import RedirectView
+from django.contrib.auth.views import LogoutView
 from rest_framework.routers import DefaultRouter
 
 from tours.views import TourViewSet, DestinationViewSet, CategoryViewSet
 from chatbot.views import ChatbotAPIView, OllamaHealthView
-from bookings.views import BookingViewSet, CartViewSet
-from reviews.views import ReviewViewSet
 from bookings.views import BookingViewSet, CartViewSet, MyItineraryView, AdminDashboardView
-
-# Khởi tạo Router tự động sinh API endpoint
-router = DefaultRouter()
-router.register(r'categories', CategoryViewSet, basename='category')
-router.register(r'tours', TourViewSet, basename='tour')
-router.register(r'cart', CartViewSet, basename='cart')
-router.register(r'destinations', DestinationViewSet, basename='destination')
-router.register(r'bookings', BookingViewSet, basename='booking')
-router.register(r'reviews', ReviewViewSet, basename='review')
-
-from django.views.generic import RedirectView
+from reviews.views import ReviewViewSet
 from core.views import (
     CustomAdminLoginView, CustomAdminDashboardView, AdminTourListView, AdminTourDeleteView,
     AdminTourCreateView, AdminTourUpdateView,
@@ -29,7 +18,15 @@ from core.views import (
     AdminForgotPasswordView, AdminUserListView, AdminUserUpdateView, AdminSupportRequestListView, admin_complete_support_request, admin_toggle_user_status,
     admin_get_destination_info, admin_update_destination_info
 )
-from django.contrib.auth.views import LogoutView
+
+# Khởi tạo Router tự động sinh API endpoint
+router = DefaultRouter()
+router.register(r'categories', CategoryViewSet, basename='category')
+router.register(r'tours', TourViewSet, basename='tour')
+router.register(r'cart', CartViewSet, basename='cart')
+router.register(r'destinations', DestinationViewSet, basename='destination')
+router.register(r'bookings', BookingViewSet, basename='booking')
+router.register(r'reviews', ReviewViewSet, basename='review')
 
 urlpatterns = [
     path('', RedirectView.as_view(url='/api/', permanent=False)),
