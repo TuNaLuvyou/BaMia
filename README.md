@@ -1,164 +1,175 @@
 <div align="center">
-  <h1>🌍 TravelBaMia</h1>
-  <p><strong>Hệ Thống Đặt Tour Du Lịch Thông Minh Tích Hợp AI (Qwen 3: 8B)</strong></p>
-  
-  [![React](https://img.shields.io/badge/React-19-blue.svg)](https://reactjs.org/)
-  [![Django](https://img.shields.io/badge/Django-REST-green.svg)](https://www.djangoproject.com/)
-  [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue.svg)](https://www.postgresql.org/)
-  [![Ollama](https://img.shields.io/badge/Ollama-Qwen3:8b-orange.svg)](https://ollama.com/)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC.svg)](https://tailwindcss.com/)
+
+# 🌍 TravelBaMia
+
+**Hệ Thống Đặt Tour Du Lịch Thông Minh Tích Hợp AI (Local LLM - Qwen 3: 8B)**
+
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
+[![Django](https://img.shields.io/badge/Django-5+-092E20?style=for-the-badge&logo=django)](https://www.djangoproject.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?style=for-the-badge&logo=postgresql)](https://www.postgresql.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Ollama](https://img.shields.io/badge/Ollama-Qwen3:8B-FF6B35?style=for-the-badge)](https://ollama.com/)
+
+[![Tests](https://img.shields.io/badge/Tests-46%20passing-brightgreen?style=for-the-badge&logo=checkmarx)](./travel-backend)
+[![GitHub last commit](https://img.shields.io/github/last-commit/TuNaLuvyou/BaMia?style=for-the-badge&color=indigo)](https://github.com/TuNaLuvyou/BaMia/commits)
+
 </div>
 
 ---
 
-> **Dự án thực tập cơ sở:** Xây dựng Website đặt tour du lịch trực tuyến, tích hợp lịch trình thông minh dự báo thời tiết và trợ lý ảo AI cục bộ (Local AI Chatbot) hỗ trợ tìm kiếm và tư vấn thông minh.
-
-Dự án đã được tối ưu hóa toàn diện đạt chuẩn 10/10: nâng cấp hệ thống cơ sở dữ liệu lên **PostgreSQL** cực kỳ mạnh mẽ, nâng cấp mô hình AI lên **Qwen 3: 8B (Ollama)** với context window 8K, tích hợp Rate Limiting & Throttling bảo vệ API, chuẩn hóa bảo mật JWT 60 phút và tái cấu trúc giao diện với font chữ tiếng Việt chuyên nghiệp **"Be Vietnam Pro"**.
-
-## 📑 Mục Lục
-- [📸 Điểm Nổi Bật Của Hệ Thống](#-điểm-nổi-bật-của-hệ-thống)
-- [🛠️ Công Nghệ Sử Dụng](#️-công-nghệ-sử-dụng)
-- [🏗️ Cấu Trúc Dự Án](#-cấu-trúc-dự-án)
-- [🚀 Hướng Dẫn Cài Đặt & Chạy Dự Án](#-hướng-dẫn-cài-đặt--chạy-dự-án)
-- [📝 Bản Quyền & Ghi Chú](#-bản-quyền--ghi-chú)
+> **Dự án thực tập cơ sở** — Xây dựng nền tảng đặt tour du lịch trực tuyến, tích hợp **AI Chatbot chạy cục bộ (Local LLM)** với công nghệ RAG, dự báo thời tiết thời gian thực và luồng thanh toán hoàn chỉnh.
 
 ---
 
-## 📸 Điểm Nổi Bật Của Hệ Thống
+## ✨ Tính Năng Nổi Bật
 
-### 1. 🤖 Trợ Lý Ảo AI Đa Năng (Local AI Chatbot - Qwen 3: 8B)
-Tích hợp mô hình ngôn ngữ thế hệ mới **Qwen 3: 8B** chạy cục bộ qua **Ollama** giúp tối ưu chi phí vận hành, bảo mật dữ liệu tuyệt đối và khả năng suy luận mạnh mẽ:
-- **Công nghệ RAG (Retrieval-Augmented Generation):** Tự động phát hiện địa điểm khách hàng đang hỏi, nạp dữ liệu chi tiết của địa danh đó từ file tài liệu hệ thống theo thời gian thực để AI trả lời chính xác, tránh hiện tượng "ảo giác" (hallucination).
-- **Đồng bộ hóa dữ liệu thời gian thực (Database-Aware):** AI tự động nhận diện trạng thái khách hàng, chào hỏi cá nhân hóa, nắm bắt giỏ hàng và lịch sử đơn hàng để tư vấn chuyên sâu.
-- **Tự động liên kết thẻ Tour trực quan (UI Card Rendering):** Tự động chèn thẻ Tour động dưới khung chat để khách hàng click xem chi tiết hoặc đặt tour trực tiếp.
-- **Xử lý khớp điểm đến thông minh & Ngân sách:** Tự động ánh xạ yêu cầu và parse ngân sách chính xác (ví dụ: *"dưới 2,5 triệu"* -> `2.500.000 VNĐ`).
-- **Cơ chế bảo mật dữ liệu:** Tự động xóa sạch lịch sử chat sau 30 phút đóng trình duyệt hoặc khi tắt server để bảo vệ quyền riêng tư.
+### 🤖 Trợ Lý AI Đa Năng (Local AI Chatbot — Qwen 3: 8B)
 
-### 2. 📅 Lịch Trình Tích Hợp Dự Báo Thời Tiết
-- Giao diện lịch biểu thông minh **FullCalendar** hiển thị 35 ngày trực quan.
-- **Tích hợp OpenWeather API:** Tự động định vị địa điểm tour và hiển thị widget thời tiết nhiệt độ, biểu tượng trạng thái thời tiết chính xác theo từng ngày tại đúng ô lịch của tour đó!
-- Bộ lọc trạng thái đơn hàng trực quan qua màu sắc: *Đã thanh toán (Xanh lá)* - *Chờ thanh toán (Vàng)* - *Trong giỏ hàng (Cam)*.
+Tính năng flagship của dự án: AI Chatbot chạy **hoàn toàn cục bộ** qua Ollama, không phụ thuộc cloud, bảo mật dữ liệu tuyệt đối.
 
-### 3. 🛍️ Quản Lý Đơn Hàng & Giỏ Hàng Nâng Cao
-- Hỗ trợ thanh toán tích hợp nhiều tour cùng lúc.
-- **Thùng rác thông minh (Soft Delete):** Đơn hàng khi xóa sẽ được đưa vào thùng rác, đếm ngược 30 ngày trước khi xóa vĩnh viễn và cho phép khôi phục lại bất kỳ lúc nào chỉ với 1-click!
+- **RAG (Retrieval-Augmented Generation):** Tự động phát hiện địa điểm người dùng hỏi, nạp dữ liệu chi tiết từ tài liệu hệ thống để trả lời chính xác — loại bỏ hoàn toàn hiện tượng AI "bịa" (hallucination).
+- **Database-Aware:** AI nhận diện trạng thái người dùng (giỏ hàng, lịch sử đơn hàng) để tư vấn cá nhân hóa.
+- **Streaming Response:** Phản hồi AI hiển thị từng từ theo thời gian thực (token streaming).
+- **UI Card Rendering:** Tự động chèn thẻ Tour động vào cuộc hội thoại để người dùng đặt tour ngay lập tức.
+- **Smart Budget Parser:** Hiểu ngân sách tự nhiên — `"dưới 2,5 triệu"` → `2.500.000 VNĐ`, `"500k"` → `500.000 VNĐ`.
+- **Tự bảo vệ quyền riêng tư:** Lịch sử chat tự xóa sau 30 phút không hoạt động.
 
----
+### 📅 Lịch Trình & Dự Báo Thời Tiết
 
-## 🛠️ Công Nghệ Sử Dụng
+- Giao diện lịch **FullCalendar** hiển thị 35 ngày, đồng bộ với các tour đã đặt.
+- **OpenWeather API:** Hiển thị widget nhiệt độ & biểu tượng thời tiết trực tiếp tại ô lịch của từng tour theo địa điểm thực tế.
+- Bộ lọc đơn hàng trực quan qua màu sắc: Đã thanh toán / Chờ thanh toán / Trong giỏ hàng.
 
-- **Frontend:** React 19, Vite, React Router Dom, Tailwind CSS, FullCalendar, Axios, Lucide React. Font chữ **Be Vietnam Pro** (Google Fonts).
-- **Backend:** Django 5+, Django REST Framework, Simple JWT (60 phút Access Token), PostgreSQL, Requests (Streaming AI Tokens).
-- **AI & API:** Ollama Local LLM (**Qwen 3: 8B**), OpenWeather Map API.
-- **Bảo mật & Hiệu năng:** Rate Limiting (DRF Throttling), Anti-Replay IPN Webhook Verification, CORS Configuration, Atomic Transactions.
-- **DevOps:** Docker & Docker Compose (cho PostgreSQL).
+### 🛍️ Luồng Đặt Tour & Thanh Toán
 
----
+- Đặt nhiều tour cùng lúc, quản lý số lượng chỗ trống tự động (`available_slots`).
+- Hỗ trợ thanh toán mock qua VNPAY / MoMo / Stripe với IPN Webhook Signature Verification.
+- **Soft Delete thông minh:** Đơn hàng xóa → vào thùng rác → đếm ngược 30 ngày → cho phép khôi phục bất kỳ lúc nào.
 
-## 🏗️ Cấu Trúc Dự Án
+### 🔐 Bảo Mật & Hiệu Năng
 
-Dự án được xây dựng theo kiến trúc tách biệt hoàn toàn giữa Client và Server (Monorepo):
-- **`travel-backend/`:** Backend API (Django + DRF), quản lý Database qua **PostgreSQL** và tích hợp AI.
-- **`travel-frontend/`:** Giao diện người dùng (React + Vite + Tailwind CSS).
-- **`docker-compose.yml`:** Môi trường Database PostgreSQL.
+- **JWT Authentication** (60 phút Access Token + Refresh Token).
+- **Rate Limiting (DRF Throttling):** Bảo vệ tất cả endpoint khỏi brute-force.
+- **Anti-Replay IPN:** Mỗi webhook chỉ được xử lý đúng một lần.
+- **Atomic Transactions:** Đảm bảo tính toàn vẹn dữ liệu khi đặt tour (không bao giờ trừ slot khi thanh toán thất bại).
 
 ---
 
-## 🚀 Hướng Dẫn Cài Đặt & Chạy Dự Án
+## 🛠️ Tech Stack
 
-### 📦 Yêu Cầu Hệ Thống
-- **Node.js** (Phiên bản >= 18)
-- **Python** (Phiên bản >= 3.10)
-- **Docker & Docker Compose** (Để chạy PostgreSQL Database)
-- **Ollama** (Chạy mô hình `qwen3:8b` cục bộ)
+| Layer | Công nghệ |
+|---|---|
+| **Frontend** | React 19, Vite 5, Tailwind CSS, FullCalendar, Axios, Lucide React |
+| **Backend** | Django 5+, Django REST Framework, Simple JWT |
+| **Database** | PostgreSQL 15 (Docker) |
+| **AI Engine** | Ollama Local LLM (**Qwen 3: 8B**), RAG Pipeline |
+| **External APIs** | OpenWeather Map API |
+| **Security** | JWT (60min), DRF Throttling, Anti-Replay IPN, Atomic Transactions |
+| **Testing** | Django `unittest` — 46 test cases (bookings, users, reviews, payments, chatbot) |
+| **DevOps** | Docker & Docker Compose |
 
-### Bước 1: Khởi Động Database (PostgreSQL)
-Dự án đã tích hợp sẵn file `docker-compose.yml`. Tại thư mục gốc của dự án, mở terminal và chạy:
+---
+
+## 📂 Cấu Trúc Dự Án
+
+```text
+.
+├── travel-backend/         # Django REST API
+│   ├── bookings/           # Đặt tour, giỏ hàng, lịch trình, soft delete
+│   ├── payments/           # Thanh toán, IPN webhook, anti-replay
+│   ├── reviews/            # Đánh giá tour, đồng bộ rating tự động
+│   ├── chatbot/            # AI Chatbot: RAG + Budget Parser + Streaming
+│   ├── tours/              # Quản lý tour & địa điểm
+│   ├── users/              # Auth: Register, Login, JWT, Reset Password
+│   └── core/               # Django settings, URL routing
+├── travel-frontend/        # React + Vite SPA
+│   └── src/
+│       ├── pages/          # Trang: Home, Tours, Cart, Payment, Calendar, Chatbot
+│       ├── components/     # UI Components tái sử dụng
+│       └── context/        # Auth Context, Cart Context
+└── docker-compose.yml      # PostgreSQL container
+```
+
+---
+
+## 🚀 Hướng Dẫn Cài Đặt
+
+### Yêu cầu hệ thống
+- **Python** ≥ 3.10 | **Node.js** ≥ 18 | **Docker & Docker Compose** | **Ollama**
+
+### 1. Khởi chạy Database (PostgreSQL)
+
 ```bash
 docker-compose up -d
 ```
-> Database sẽ chạy ở cổng `5432` với user: `bamia` / password: `123` / DB name: `bamia_db`.
 
-### Bước 2: Cài Đặt & Chạy Backend (Django)
+### 2. Cấu hình & Khởi chạy Backend
 
-1. Di chuyển vào thư mục backend:
-   ```bash
-   cd travel-backend
-   ```
-2. Khởi tạo & kích hoạt Virtual Environment:
-   ```bash
-   # Trên Windows
-   python -m venv venv
-   venv\Scripts\activate
+```bash
+cd travel-backend
+python -m venv venv && source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
 
-   # Trên macOS/Linux
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-3. Cài đặt thư viện:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Cấu hình biến môi trường:
-   Sao chép `.env.example` thành `.env` và đảm bảo các thông số DB khớp với Docker:
-   ```env
-   SECRET_KEY=your_secret_key
-   DEBUG=True
-   ALLOWED_HOSTS=localhost,127.0.0.1
-   
-   # PostgreSQL Configuration
-   DB_NAME=bamia_db
-   DB_USER=bamia
-   DB_PASSWORD=123
-   DB_HOST=127.0.0.1
-   DB_PORT=5432
-   
-   # Ollama AI Configuration (Model Qwen 3: 8B)
-   OLLAMA_MODEL=qwen3:8b
-   OLLAMA_BASE_URL=http://127.0.0.1:11434
-   ```
-5. Chạy Migrations & Khởi động Server:
-   ```bash
-   python manage.py makemigrations
-   python manage.py migrate
-   python manage.py runserver
-   ```
-   > Backend sẽ chạy tại: `http://127.0.0.1:8000/`
+# Sao chép .env.example thành .env và điền thông tin
+cp .env.example .env
 
-### Bước 3: Cài Đặt & Chạy Frontend (React + Vite)
+python manage.py migrate
+python manage.py runserver
+```
 
-1. Mở terminal mới, di chuyển vào thư mục frontend:
-   ```bash
-   cd travel-frontend
-   ```
-2. Cài đặt dependencies:
-   ```bash
-   npm install
-   ```
-3. Cấu hình biến môi trường:
-   Sao chép `.env.example` thành `.env`:
-   ```env
-   VITE_API_BASE_URL=http://127.0.0.1:8000/api/
-   VITE_BACKEND_BASE_URL=http://127.0.0.1:8000
-   VITE_OPENWEATHER_API_KEY=your_openweather_api_key
-   VITE_PAYMENT_WEBHOOK_SECRET=mock_signature_12345
-   ```
-4. Khởi chạy ứng dụng:
-   ```bash
-   npm run dev
-   ```
-   > Frontend sẽ chạy tại: `http://localhost:5173/`
+**Nội dung `.env` backend:**
+```env
+SECRET_KEY=your_secret_key_here
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
 
-### Bước 4: Khởi Động Trợ Lý AI (Ollama Qwen 3: 8B)
+DB_NAME=bamia_db
+DB_USER=bamia
+DB_PASSWORD=your_password
+DB_HOST=127.0.0.1
+DB_PORT=5432
 
-1. Tải và cài đặt tại [ollama.com](https://ollama.com).
-2. Tải mô hình Qwen 3: 8B:
-   ```bash
-   ollama pull qwen3:8b
-   ```
-3. Đảm bảo Ollama đang chạy nền (mặc định tại `http://127.0.0.1:11434`). AI Chatbot sẽ tự động kết nối và hoạt động với mô hình **Qwen 3: 8B**.
+OLLAMA_MODEL=qwen3:8b
+OLLAMA_BASE_URL=http://127.0.0.1:11434
+
+OPENWEATHER_API_KEY=your_openweather_key
+PAYMENT_WEBHOOK_SECRET=your_webhook_secret
+```
+
+### 3. Khởi chạy AI (Ollama + Qwen 3: 8B)
+
+```bash
+# Tải model (lần đầu, ~5GB)
+ollama pull qwen3:8b
+# Ollama tự chạy nền tại http://127.0.0.1:11434
+```
+
+### 4. Cấu hình & Khởi chạy Frontend
+
+```bash
+cd travel-frontend
+npm install
+cp .env.example .env  # Điền VITE_OPENWEATHER_API_KEY & VITE_PAYMENT_WEBHOOK_SECRET
+npm run dev
+```
+> App: `http://localhost:5173/`
+
+### 5. Chạy Kiểm Thử Tự Động
+
+```bash
+cd travel-backend
+python manage.py test
+# Expected: Ran 46 tests ... OK
+```
 
 ---
 
-## 📝 Bản Quyền & Ghi Chú
-Dự án được thiết kế và tối ưu hóa toàn diện cho kỳ thực tập cơ sở với chuẩn mực chất lượng 10/10. Mọi dữ liệu cá nhân, giỏ hàng và lịch trình du lịch đều được bảo mật tối đa, mang lại trải nghiệm đặt tour thông minh chuẩn kỷ nguyên số! 🌟
+## 🔒 Bảo Mật & Lưu Ý
+- File `.env` đã được cấu hình trong `.gitignore` — **không bao giờ commit lên GitHub**.
+- Module thanh toán là **mock/sandbox** — không tích hợp cổng thanh toán thật.
+- Khi triển khai production, backend phải nhận IPN thật từ nhà cung cấp và không bao giờ đặt `PAYMENT_WEBHOOK_SECRET` ở frontend.
+
+---
+
+*Phát triển bởi **TuNa** — Dự án Thực Tập Cơ Sở.*
