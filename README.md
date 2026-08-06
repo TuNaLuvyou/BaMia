@@ -165,11 +165,6 @@ python manage.py test
 
 ---
 
-## 🔒 Bảo Mật & Lưu Ý
-- File `.env` đã được cấu hình trong `.gitignore` — **không bao giờ commit lên GitHub**.
-- Module thanh toán là **mock/sandbox** — không tích hợp cổng thanh toán thật.
-- Khi triển khai production, backend phải nhận IPN thật từ nhà cung cấp và không bao giờ đặt `PAYMENT_WEBHOOK_SECRET` ở frontend.
-
 ---
 
 *Phát triển bởi **TuNa** — Dự án Thực Tập Cơ Sở.*
