@@ -165,6 +165,4 @@ python manage.py test
 
 ---
 
----
-
 *Phát triển bởi **TuNa** — Dự án Thực Tập Cơ Sở.*
