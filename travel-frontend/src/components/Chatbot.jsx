@@ -44,6 +44,7 @@ const Chatbot = () => {
 
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const feedbackSentRef = useRef(new Set());
 
   // Tự động cuộn mượt mà xuống dưới đáy khung chat
   const scrollToBottom = () => {
@@ -91,6 +92,7 @@ const Chatbot = () => {
       setSystemPrompt("");
       setOllamaStatus("unknown");
       localStorage.removeItem(CHAT_STORAGE_KEY);
+      feedbackSentRef.current.clear();
     }
   }, [user, authLoading]);
 
@@ -270,6 +272,7 @@ const Chatbot = () => {
       setIsLoading(false);
       setInput("");
       localStorage.removeItem(CHAT_STORAGE_KEY);
+      feedbackSentRef.current.clear();
     }
   };
 
@@ -278,6 +281,20 @@ const Chatbot = () => {
       navigate("/contact");
     } else {
       setMessages(prev => [...prev, { text: "Tôi muốn tiếp tục hỏi AI", isBot: false }]);
+    }
+  };
+
+  // 👍/👎 chỉ gửi một lần cho mỗi tin nhắn (theo log_id)
+  const handleFeedback = async (index, logId, value) => {
+    if (!logId || feedbackSentRef.current.has(logId)) return;
+    feedbackSentRef.current.add(logId);
+    setMessages(prev => prev.map((msg, i) => (i === index ? { ...msg, feedback: value } : msg)));
+    try {
+      await api.post("chat/feedback/", { log_id: logId, feedback: value });
+    } catch (err) {
+      console.error("Lỗi gửi phản hồi:", err);
+      feedbackSentRef.current.delete(logId);
+      setMessages(prev => prev.map((msg, i) => (i === index ? { ...msg, feedback: null } : msg)));
     }
   };
 
@@ -315,6 +332,7 @@ const Chatbot = () => {
                 toursData={toursData} 
                 messagesEndRef={messagesEndRef} 
                 onEscalate={handleEscalate} 
+                onFeedback={handleFeedback}
               />
               <ChatbotInput 
                 input={input} 

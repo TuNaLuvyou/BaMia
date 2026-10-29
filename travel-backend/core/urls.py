@@ -6,7 +6,7 @@ from django.contrib.auth.views import LogoutView
 from rest_framework.routers import DefaultRouter
 
 from tours.views import TourViewSet, DestinationViewSet, CategoryViewSet
-from chatbot.views import ChatbotAPIView, OllamaHealthView
+from chatbot.views import ChatbotAPIView, ChatbotFeedbackView, OllamaHealthView
 from bookings.views import BookingViewSet, CartViewSet, MyItineraryView, AdminDashboardView
 from reviews.views import ReviewViewSet
 from core.views import (
@@ -69,6 +69,7 @@ urlpatterns = [
     path('api/auth/', include('users.urls')), # Chuyển đăng ký/đăng nhập vào group auth/
     path('api/chat/', ChatbotAPIView.as_view(), name='ai-chat'),
     path('api/chat/health/', OllamaHealthView.as_view(), name='ai-health'),
+    path('api/chat/feedback/', ChatbotFeedbackView.as_view(), name='ai-chat-feedback'),
     path('api/', include(router.urls)),       # Toàn bộ API CRUD sẽ nằm ở đây
     path('api/my-itinerary/', MyItineraryView.as_view(), name='my-itinerary'),
     path('api/admin-dashboard/', AdminDashboardView.as_view(), name='admin-dashboard'),

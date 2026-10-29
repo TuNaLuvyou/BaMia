@@ -1,5 +1,5 @@
 import React from "react";
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangle, ThumbsDown, ThumbsUp } from "lucide-react";
 import TourCard from "./TourCard";
 import { cleanBotReply } from "./ChatbotUtils";
 
@@ -9,7 +9,8 @@ const ChatbotMessages = ({
   streamingText, 
   toursData, 
   messagesEndRef,
-  onEscalate
+  onEscalate,
+  onFeedback
 }) => {
   return (
     <div className="flex-grow p-4 overflow-y-auto bg-gray-50 flex flex-col gap-3">
@@ -44,6 +45,39 @@ const ChatbotMessages = ({
                     Gặp nhân viên
                   </button>
                 </div>
+              </div>
+            )}
+            {msg.isBot && !msg.isError && msg.logId && (
+              <div className="mt-2 flex items-center gap-1 border-t border-gray-50 pt-2">
+                <span className="text-[10px] text-gray-400 mr-1">Câu trả lời này:</span>
+                <button
+                  type="button"
+                  aria-label="Hữu ích"
+                  title="Hữu ích"
+                  disabled={typeof msg.feedback === "number"}
+                  onClick={() => onFeedback?.(index, msg.logId, 1)}
+                  className={`p-1 rounded-md transition disabled:cursor-default ${
+                    msg.feedback === 1
+                      ? "text-teal-600 bg-teal-50"
+                      : "text-gray-400 hover:text-teal-600 hover:bg-gray-50"
+                  }`}
+                >
+                  <ThumbsUp className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Không hữu ích"
+                  title="Không hữu ích"
+                  disabled={typeof msg.feedback === "number"}
+                  onClick={() => onFeedback?.(index, msg.logId, -1)}
+                  className={`p-1 rounded-md transition disabled:cursor-default ${
+                    msg.feedback === -1
+                      ? "text-orange-500 bg-orange-50"
+                      : "text-gray-400 hover:text-orange-500 hover:bg-gray-50"
+                  }`}
+                >
+                  <ThumbsDown className="w-3.5 h-3.5" />
+                </button>
               </div>
             )}
           </div>

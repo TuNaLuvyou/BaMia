@@ -1,4 +1,5 @@
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.throttling import ScopedRateThrottle
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import StreamingHttpResponse
@@ -11,6 +12,7 @@ import os
 
 from tours.models import Tour, Destination
 from chatbot.context import build_account_status_context
+from chatbot.models import IntentLog
 from chatbot.ml.intent_service import get_intent_service, routing_enabled
 
 OLLAMA_BASE_URL = os.environ.get('OLLAMA_BASE_URL', 'http://127.0.0.1:11434').rstrip('/')
@@ -159,6 +161,26 @@ def _extract_budget(text: str):
             pass
 
     return None
+
+
+def _log_intent(user_message: str, intent_result, routed: bool):
+    """
+    Ghi log khi bộ phân loại thực sự chạy (kể cả khi không vượt ngưỡng).
+    Không lưu user id. Lỗi ghi log KHÔNG được làm hỏng lượt chat.
+    """
+    if intent_result is None:
+        return None
+    try:
+        log = IntentLog.objects.create(
+            text=user_message[:500],
+            predicted=intent_result.get('intent') or '',
+            confidence=float(intent_result.get('confidence') or 0.0),
+            routed=bool(routed),
+        )
+        return log.id
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Intent] Không ghi được IntentLog: {exc}")
+        return None
 
 
 def _classify_intent(user_message: str):
@@ -395,7 +417,7 @@ class ChatbotAPIView(APIView):
         intent = intent_result.get('intent') if intent_result else None
         routed = bool(intent_result and intent_result.get('accepted'))
         escalate = bool(routed and intent == 'complaint_support')
-        log_id = None  # Phase 3: ghi IntentLog và trả id về đây
+        log_id = _log_intent(user_message, intent_result, routed)
 
         # blocked: từ chối cố định, KHÔNG gọi Ollama
         if routed and intent == 'blocked':
@@ -488,3 +510,48 @@ class ChatbotAPIView(APIView):
             return Response(data)
         except Exception as e:
             return Response({'error': str(e)}, status=500)
+
+
+class ChatbotFeedbackView(APIView):
+    """
+    Nhận phản hồi 👍/👎 cho một log ý định.
+
+    - Chỉ cập nhật, KHÔNG trả nội dung log (tránh lộ dữ liệu).
+    - Mỗi log chỉ nhận phản hồi một lần.
+    - Không lưu danh tính người gửi.
+    """
+
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = 'chat_feedback'
+
+    def post(self, request):
+        raw_log_id = request.data.get('log_id')
+        raw_feedback = request.data.get('feedback')
+
+        try:
+            log_id = int(raw_log_id)
+        except (TypeError, ValueError):
+            return Response({'error': 'log_id không hợp lệ.'}, status=400)
+
+        try:
+            feedback = int(raw_feedback)
+        except (TypeError, ValueError):
+            return Response({'error': 'feedback phải là -1, 0 hoặc 1.'}, status=400)
+
+        if feedback not in (-1, 0, 1):
+            return Response({'error': 'feedback phải là -1, 0 hoặc 1.'}, status=400)
+
+        log = IntentLog.objects.filter(pk=log_id).only('id', 'feedback').first()
+        if log is None:
+            return Response({'error': 'Không tìm thấy log.'}, status=404)
+
+        if log.feedback is not None:
+            return Response({'status': 'already_recorded'})
+
+        updated = IntentLog.objects.filter(pk=log_id, feedback__isnull=True).update(
+            feedback=feedback
+        )
+        if not updated:
+            return Response({'status': 'already_recorded'})
+        return Response({'status': 'ok'})
