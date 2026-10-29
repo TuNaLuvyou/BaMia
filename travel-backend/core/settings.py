@@ -158,7 +158,8 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_THROTTLE_RATES': {
         'anon': '60/minute',
-        'user': '300/minute'
+        'user': '300/minute',
+        'chat_feedback': '30/minute',
     }
 }
 SIMPLE_JWT = {
@@ -183,3 +184,22 @@ else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'TravelBaMia <support@travelbamia.com>')
+
+# ── Chatbot: bộ phân loại ý định (ML) ─────────────────────────────────────────
+# Cờ tổng để tắt toàn bộ định tuyến ý định. Khi False (hoặc thiếu file mô hình),
+# chatbot chạy y hệt luồng cũ (security_keywords + RAG + danh sách tour).
+INTENT_ROUTING_ENABLED = os.environ.get('INTENT_ROUTING_ENABLED', 'True').lower() == 'true'
+INTENT_MODEL_PATH = os.environ.get(
+    'INTENT_MODEL_PATH',
+    str(BASE_DIR / 'chatbot' / 'ml' / 'artifacts' / 'intent_model.pkl'),
+)
+INTENT_DATA_PATH = os.environ.get(
+    'INTENT_DATA_PATH',
+    str(BASE_DIR / 'chatbot' / 'ml' / 'data' / 'intents.csv'),
+)
+INTENT_GOLDEN_PATH = os.environ.get(
+    'INTENT_GOLDEN_PATH',
+    str(BASE_DIR / 'chatbot' / 'ml' / 'data' / 'golden.csv'),
+)
+# Số ngày giữ log ý định (mặc định 90) — dùng bởi `purge_intent_logs`.
+INTENT_LOG_RETENTION_DAYS = int(os.environ.get('INTENT_LOG_RETENTION_DAYS', '90'))

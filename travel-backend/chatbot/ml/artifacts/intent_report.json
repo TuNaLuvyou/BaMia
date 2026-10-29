@@ -1,0 +1,294 @@
+{
+  "generated_at": "2026-10-29T16:32:06.825447+00:00",
+  "data_path": "D:\\Code\\DuAn\\BaMia\\travel-backend\\chatbot\\ml\\data\\intents.csv",
+  "golden_path": "D:\\Code\\DuAn\\BaMia\\travel-backend\\chatbot\\ml\\data\\golden.csv",
+  "n_samples": 72,
+  "label_counts": {
+    "tour_search": 12,
+    "destination_info": 12,
+    "account_status": 12,
+    "complaint_support": 12,
+    "blocked": 12,
+    "chitchat": 12
+  },
+  "labels": [
+    "tour_search",
+    "destination_info",
+    "account_status",
+    "complaint_support",
+    "blocked",
+    "chitchat"
+  ],
+  "vectorizer": {
+    "analyzer": "char_wb",
+    "ngram_range": [
+      2,
+      5
+    ],
+    "sublinear_tf": true
+  },
+  "cv": {
+    "naive_bayes": {
+      "name": "Multinomial Naive Bayes",
+      "folds": [
+        {
+          "accuracy": 0.6666666666666666,
+          "macro_f1": 0.5916666666666667,
+          "blocked_recall": 0.0
+        },
+        {
+          "accuracy": 0.6666666666666666,
+          "macro_f1": 0.5873015873015873,
+          "blocked_recall": 0.0
+        },
+        {
+          "accuracy": 0.7142857142857143,
+          "macro_f1": 0.6555555555555556,
+          "blocked_recall": 0.0
+        },
+        {
+          "accuracy": 0.5,
+          "macro_f1": 0.48412698412698413,
+          "blocked_recall": 0.3333333333333333
+        },
+        {
+          "accuracy": 0.6428571428571429,
+          "macro_f1": 0.5555555555555555,
+          "blocked_recall": 0.3333333333333333
+        }
+      ],
+      "accuracy_mean": 0.638095238095238,
+      "accuracy_std": 0.07284313590846835,
+      "macro_f1_mean": 0.5748412698412698,
+      "macro_f1_std": 0.05577485063373022,
+      "blocked_recall_mean": 0.13333333333333333,
+      "blocked_recall_std": 0.1632993161855452
+    },
+    "knn": {
+      "name": "k-Nearest Neighbors",
+      "folds": [
+        {
+          "accuracy": 0.6,
+          "macro_f1": 0.5111111111111111,
+          "blocked_recall": 0.0
+        },
+        {
+          "accuracy": 0.6666666666666666,
+          "macro_f1": 0.6174603174603175,
+          "blocked_recall": 0.0
+        },
+        {
+          "accuracy": 0.5714285714285714,
+          "macro_f1": 0.4888888888888889,
+          "blocked_recall": 0.0
+        },
+        {
+          "accuracy": 0.35714285714285715,
+          "macro_f1": 0.375,
+          "blocked_recall": 0.3333333333333333
+        },
+        {
+          "accuracy": 0.7142857142857143,
+          "macro_f1": 0.688888888888889,
+          "blocked_recall": 0.3333333333333333
+        }
+      ],
+      "accuracy_mean": 0.5819047619047619,
+      "accuracy_std": 0.12301577060927636,
+      "macro_f1_mean": 0.5362698412698413,
+      "macro_f1_std": 0.10841618437770915,
+      "blocked_recall_mean": 0.13333333333333333,
+      "blocked_recall_std": 0.1632993161855452
+    },
+    "svm": {
+      "name": "SVM (linear)",
+      "folds": [
+        {
+          "accuracy": 0.7333333333333333,
+          "macro_f1": 0.6511904761904762,
+          "blocked_recall": 0.0
+        },
+        {
+          "accuracy": 0.8,
+          "macro_f1": 0.7206349206349206,
+          "blocked_recall": 0.0
+        },
+        {
+          "accuracy": 0.7142857142857143,
+          "macro_f1": 0.6666666666666666,
+          "blocked_recall": 0.0
+        },
+        {
+          "accuracy": 0.5,
+          "macro_f1": 0.5,
+          "blocked_recall": 0.3333333333333333
+        },
+        {
+          "accuracy": 0.6428571428571429,
+          "macro_f1": 0.561111111111111,
+          "blocked_recall": 0.3333333333333333
+        }
+      ],
+      "accuracy_mean": 0.6780952380952381,
+      "accuracy_std": 0.10215811851800288,
+      "macro_f1_mean": 0.6199206349206349,
+      "macro_f1_std": 0.07892512980597753,
+      "blocked_recall_mean": 0.13333333333333333,
+      "blocked_recall_std": 0.1632993161855452
+    },
+    "decision_tree": {
+      "name": "Decision Tree",
+      "folds": [
+        {
+          "accuracy": 0.5333333333333333,
+          "macro_f1": 0.43809523809523804,
+          "blocked_recall": 0.0
+        },
+        {
+          "accuracy": 0.5333333333333333,
+          "macro_f1": 0.44047619047619047,
+          "blocked_recall": 0.0
+        },
+        {
+          "accuracy": 0.6428571428571429,
+          "macro_f1": 0.6507936507936508,
+          "blocked_recall": 1.0
+        },
+        {
+          "accuracy": 0.5714285714285714,
+          "macro_f1": 0.5,
+          "blocked_recall": 0.6666666666666666
+        },
+        {
+          "accuracy": 0.5714285714285714,
+          "macro_f1": 0.5785714285714285,
+          "blocked_recall": 0.6666666666666666
+        }
+      ],
+      "accuracy_mean": 0.5704761904761904,
+      "accuracy_std": 0.040000000000000015,
+      "macro_f1_mean": 0.5215873015873015,
+      "macro_f1_std": 0.08241046050719418,
+      "blocked_recall_mean": 0.4666666666666666,
+      "blocked_recall_std": 0.4
+    }
+  },
+  "cv_meta": {
+    "folds": 5,
+    "requested_folds": 5,
+    "n_samples": 72
+  },
+  "best_algo": "svm",
+  "best_algo_name": "SVM (linear)",
+  "best_oof_per_class": {
+    "tour_search": {
+      "precision": 0.6875,
+      "recall": 0.9166666666666666,
+      "f1": 0.7857142857142857,
+      "support": 12
+    },
+    "destination_info": {
+      "precision": 0.5833333333333334,
+      "recall": 0.5833333333333334,
+      "f1": 0.5833333333333334,
+      "support": 12
+    },
+    "account_status": {
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571428571428571,
+      "support": 12
+    },
+    "complaint_support": {
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "f1": 0.6666666666666666,
+      "support": 12
+    },
+    "blocked": {
+      "precision": 0.5,
+      "recall": 0.16666666666666666,
+      "f1": 0.25,
+      "support": 12
+    },
+    "chitchat": {
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1": 0.75,
+      "support": 12
+    }
+  },
+  "best_oof_confusion_matrix": [
+    [
+      11,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      7,
+      1,
+      1,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      12,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      1,
+      8,
+      0,
+      0
+    ],
+    [
+      1,
+      2,
+      2,
+      2,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      1,
+      9
+    ]
+  ],
+  "labels_order": [
+    "tour_search",
+    "destination_info",
+    "account_status",
+    "complaint_support",
+    "blocked",
+    "chitchat"
+  ],
+  "best_oof_accuracy": 0.6805555555555556,
+  "best_oof_macro_f1": 0.6488095238095238,
+  "warnings": [
+    "Nhãn 'tour_search' chỉ có 12 mẫu (<100). Kết quả chỉ mang tính chạy thử, KHÔNG dùng để báo cáo là số liệu thật.",
+    "Nhãn 'destination_info' chỉ có 12 mẫu (<100). Kết quả chỉ mang tính chạy thử, KHÔNG dùng để báo cáo là số liệu thật.",
+    "Nhãn 'account_status' chỉ có 12 mẫu (<100). Kết quả chỉ mang tính chạy thử, KHÔNG dùng để báo cáo là số liệu thật.",
+    "Nhãn 'complaint_support' chỉ có 12 mẫu (<100). Kết quả chỉ mang tính chạy thử, KHÔNG dùng để báo cáo là số liệu thật.",
+    "Nhãn 'blocked' chỉ có 12 mẫu (<100). Kết quả chỉ mang tính chạy thử, KHÔNG dùng để báo cáo là số liệu thật.",
+    "Nhãn 'chitchat' chỉ có 12 mẫu (<100). Kết quả chỉ mang tính chạy thử, KHÔNG dùng để báo cáo là số liệu thật."
+  ],
+  "model_path": "D:\\Code\\DuAn\\BaMia\\travel-backend\\chatbot\\ml\\artifacts\\intent_model.pkl",
+  "golden": {
+    "n_samples": 0,
+    "note": "golden.csv rỗng — chưa có số liệu đánh giá độc lập."
+  }
+}

@@ -4,3 +4,13 @@ __pycache__/
 *.pyc
 db.sqlite3
 .env
+
+# ── Chatbot ML artifacts ──────────────────────────────────────────────
+# Mô hình đã huấn luyện PHẢI được commit để demo chạy được mà không cần train lại:
+#   chatbot/ml/artifacts/intent_model.pkl
+# Chỉ bỏ qua các bản sao lưu / báo cáo có timestamp và dữ liệu phản hồi người dùng.
+chatbot/ml/artifacts/backup/
+chatbot/ml/artifacts/retrain_report_*.json
+chatbot/ml/artifacts/retrain_report_*.md
+chatbot/ml/artifacts/intent_feedback_export.csv
+chatbot/ml/artifacts/*.tmp

@@ -7,3 +7,6 @@ Pillow
 python-dotenv
 requests
 psycopg[binary]
+# Bộ phân loại ý định chatbot (TF-IDF + Naive Bayes/kNN/SVM/Decision Tree)
+scikit-learn==1.9.1
+pandas==3.1.0
