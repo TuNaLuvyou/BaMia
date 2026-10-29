@@ -1,0 +1,155 @@
+{
+  "golden_path": "chatbot/ml/data/intents.csv",
+  "golden_samples": 72,
+  "model_path": "D:\\Code\\DuAn\\BaMia\\travel-backend\\chatbot\\ml\\artifacts\\intent_model.pkl",
+  "ml_algo": "svm",
+  "baseline": {
+    "n_samples": 72,
+    "accuracy": 0.2916666666666667,
+    "macro_f1": 0.3684210526315789,
+    "blocked_recall": 0.5833333333333334,
+    "unknown_count": 51,
+    "unknown_rate": 0.7083333333333334,
+    "per_class": {
+      "tour_search": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 12
+      },
+      "destination_info": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 12
+      },
+      "account_status": {
+        "precision": 1.0,
+        "recall": 0.5833333333333334,
+        "f1": 0.7368421052631579,
+        "support": 12
+      },
+      "complaint_support": {
+        "precision": 1.0,
+        "recall": 0.5833333333333334,
+        "f1": 0.7368421052631579,
+        "support": 12
+      },
+      "blocked": {
+        "precision": 1.0,
+        "recall": 0.5833333333333334,
+        "f1": 0.7368421052631579,
+        "support": 12
+      },
+      "chitchat": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 12
+      }
+    }
+  },
+  "ml": {
+    "n_samples": 72,
+    "accuracy": 0.9583333333333334,
+    "macro_f1": 0.9581149285497111,
+    "weighted_f1": 0.9581149285497111,
+    "blocked_recall": 0.8333333333333334,
+    "per_class": {
+      "tour_search": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 12
+      },
+      "destination_info": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 12
+      },
+      "account_status": {
+        "precision": 0.8571428571428571,
+        "recall": 1.0,
+        "f1": 0.9230769230769231,
+        "support": 12
+      },
+      "complaint_support": {
+        "precision": 1.0,
+        "recall": 0.9166666666666666,
+        "f1": 0.9565217391304348,
+        "support": 12
+      },
+      "blocked": {
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091,
+        "support": 12
+      },
+      "chitchat": {
+        "precision": 0.9230769230769231,
+        "recall": 1.0,
+        "f1": 0.96,
+        "support": 12
+      }
+    },
+    "confusion_matrix": [
+      [
+        12,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        12,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        12,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        11,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        10,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        12
+      ]
+    ],
+    "labels_order": [
+      "tour_search",
+      "destination_info",
+      "account_status",
+      "complaint_support",
+      "blocked",
+      "chitchat"
+    ]
+  }
+}

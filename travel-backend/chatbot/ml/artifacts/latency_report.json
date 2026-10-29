@@ -1,0 +1,79 @@
+{
+  "model_path": "D:\\Code\\DuAn\\BaMia\\travel-backend\\chatbot\\ml\\artifacts\\intent_model.pkl",
+  "total_queries": 30,
+  "iterations_per_query": 50,
+  "total_runs": 1500,
+  "latency_ms": {
+    "mean": 4.252,
+    "median_p50": 4.22,
+    "p90": 4.4,
+    "p95": 4.55,
+    "p99": 4.797,
+    "min": 4.063,
+    "max": 5.332
+  },
+  "routing_breakdown": {
+    "routed_queries": 27,
+    "routed_rate": 0.9,
+    "blocked_zero_llm_calls": 5,
+    "zero_llm_call_rate": 0.1667,
+    "intent_distribution": {
+      "tour_search": 5,
+      "destination_info": 4,
+      "chitchat": 5,
+      "account_status": 5,
+      "complaint_support": 6,
+      "blocked": 5
+    }
+  },
+  "per_query_sample": [
+    {
+      "query": "Có tour nào đi Đà Lạt 3 ngày 2 đêm giá dưới 3 triệu không?",
+      "predicted": "tour_search",
+      "confidence": 0.5523,
+      "accepted": true,
+      "mean_ms": 4.238,
+      "p95_ms": 4.403
+    },
+    {
+      "query": "Tìm tour du lịch Nha Trang hè này cho gia đình 4 người",
+      "predicted": "tour_search",
+      "confidence": 0.555,
+      "accepted": true,
+      "mean_ms": 4.306,
+      "p95_ms": 4.582
+    },
+    {
+      "query": "Cho mình danh sách tour miền Bắc khởi hành từ Hà Nội",
+      "predicted": "tour_search",
+      "confidence": 0.5366,
+      "accepted": true,
+      "mean_ms": 4.238,
+      "p95_ms": 4.421
+    },
+    {
+      "query": "tour phu quoc tam 2tr den 5tr",
+      "predicted": "tour_search",
+      "confidence": 0.5418,
+      "accepted": true,
+      "mean_ms": 4.173,
+      "p95_ms": 4.383
+    },
+    {
+      "query": "Muốn đặt tour Sapa cuối tuần này còn chỗ không?",
+      "predicted": "tour_search",
+      "confidence": 0.5732,
+      "accepted": true,
+      "mean_ms": 4.203,
+      "p95_ms": 4.264
+    },
+    {
+      "query": "Đà Lạt mùa này thời tiết thế nào, có mưa nhiều không?",
+      "predicted": "destination_info",
+      "confidence": 0.477,
+      "accepted": true,
+      "mean_ms": 4.239,
+      "p95_ms": 4.391
+    }
+  ]
+}
