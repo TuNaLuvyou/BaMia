@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-29T16:32:06.825447+00:00",
-  "data_path": "D:\\Code\\DuAn\\BaMia\\travel-backend\\chatbot\\ml\\data\\intents.csv",
-  "golden_path": "D:\\Code\\DuAn\\BaMia\\travel-backend\\chatbot\\ml\\data\\golden.csv",
+  "generated_at": "2026-10-29T17:00:24.164469+00:00",
+  "data_path": "chatbot/ml/data/intents.csv",
+  "golden_path": "chatbot/ml/data/golden.csv",
   "n_samples": 72,
   "label_counts": {
     "tour_search": 12,
