@@ -185,7 +185,7 @@ const Chatbot = () => {
         accumulatedText += token;
         setStreamingText(accumulatedText);
       },
-      onDone: (fullText, errorType, matchedDestinations = []) => {
+      onDone: (fullText, errorType, matchedDestinations = [], meta = null) => {
         setStreamingText("");
         setIsLoading(false);
         if (errorType === "connection") setOllamaStatus("offline");
@@ -240,11 +240,18 @@ const Chatbot = () => {
           console.warn(`[TourCard] Không tìm thấy tour nào phù hợp, ẩn TourCard`);
           tourId = null;
         }
-        const isEscalated = fullText.includes("[ESCALATE]");
+        const isEscalated = Boolean(meta?.escalate) || fullText.includes("[ESCALATE]");
         const cleanReply = cleanBotReply(fullText);
 
         setHistory([...newHistory, { role: "assistant", content: fullText }]);
-        setMessages((prev) => [...prev, { text: cleanReply, isBot: true, tourId, isEscalated }]);
+        setMessages((prev) => [...prev, {
+          text: cleanReply,
+          isBot: true,
+          tourId,
+          isEscalated,
+          logId: meta?.log_id ?? null,
+          intent: meta?.intent ?? null,
+        }]);
       },
       onError: (errMsg) => {
         setStreamingText("");

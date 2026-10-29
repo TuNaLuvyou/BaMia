@@ -39,6 +39,7 @@ const useStreamChat = () => {
       const decoder = new TextDecoder("utf-8");
       let fullText = "";
       let matchedDestinations = [];  // Sẽ được điền từ meta chunk
+      let meta = null;               // Meta đầy đủ (intent, escalate, log_id...)
 
       while (true) {
         const { done, value } = await reader.read();
@@ -53,13 +54,14 @@ const useStreamChat = () => {
 
             // Xử lý meta chunk (không phải token)
             if (parsed.meta === true) {
+              meta = parsed;
               matchedDestinations = parsed.matched_destinations || [];
               continue;
             }
 
             if (parsed.error) {
               onToken(parsed.token || "");
-              onDone(fullText + (parsed.token || ""), parsed.error, []);
+              onDone(fullText + (parsed.token || ""), parsed.error, [], meta);
               return;
             }
             if (parsed.token) {
@@ -75,7 +77,7 @@ const useStreamChat = () => {
           }
         }
       }
-      onDone(fullText, null, matchedDestinations);
+      onDone(fullText, null, matchedDestinations, meta);
     } catch (err) {
       if (err.name === "AbortError") return;
       const isOffline = !navigator.onLine || err.message?.includes("fetch");
